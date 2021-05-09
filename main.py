@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URL'] = 'sqlite:///pizza.db'
+app.config['SQLALCHEMY_DATABASE_URL'] = 'sqlite:///Career.db'
 db =  SQLAlchemy(app)
 
 class Degrees(db.Model):
