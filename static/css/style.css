@@ -1,0 +1,134 @@
+/**
+ * Global style
+ **/
+
+/* Grab some nice Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Orbitron:wght@669&display=swap');
+
+
+
+/* applies to everything in the website */
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: 'Exo 2', sans-serif;
+}
+
+ 
+/**
+ * Header block
+ **/
+header {
+  width: 100%;
+  min-height: 20vh;
+  margin-top: 10vh;
+}
+
+header .title{
+    text-align: center;
+    padding-top: 8vh;
+    font-size: 32px;
+    color: #b488da;
+    font-weight: 600;
+}
+
+header h1{
+  font-size: 60px;
+}
+
+/**
+ * Navigation block
+ **/
+
+
+/* by using "nav ul" instead of just "ul", only an unordered list in the nav bar will take on this styling, meaning it doesn't mess up unordered lists in the main content */
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 75%);
+
+    max-height: 12vh;
+    min-height: 8vh;
+    z-index: 1; /* this is needed to force the text and other things to show in front*/
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* hide things that fall out the box*/
+}
+
+
+nav ul li {
+  display: inline-block;
+  padding: 0px 5px;
+  margin: 0px 10px;
+  transition: all 0.4s;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 3vh 5px;
+  display: block;
+  position: relative;
+  transition: all 0.4s;
+  
+}
+
+/* Create the underline effect on hover */
+nav a::before{
+  background-color: #b488da;
+}
+
+nav a::before{
+  content : "";
+  transition: all 0.47s ease-in-out;
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  bottom: 2vh;
+  height: 3px;
+
+}
+
+/* When hovered, make the line go to the left and right ends from the middle */
+nav a:hover::before{
+  right: 0;
+  left: 0;
+}
+/**
+ * MAIN Content block
+ **/
+
+main{
+  min-height: 75vh;
+
+}
+
+/**
+ * Footer block
+ **/
+footer {
+  text-align: center;
+  min-height: 5vh;
+  line-height: 20px;
+  background-color: #2d3032;
+  width: 100%;
+}
+
+footer h2 {
+  color: rgb(161, 161, 161);
+}
+
+footer p {
+  color: rgb(161, 161, 161);
+  font-size: 80%;
+}

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degrees with Desai</title>
+    <link rel='stylesheet' href='/static/css/style.css'>
 </head>
 <body>
-    {% includes 'header.html'%}
-    {% includes 'nav.html'%}
-    {{ block content }} {{ endblock }}
-    {% includes 'footer.html'%}
+    {% include 'header.html'%}
+    {% include 'nav.html'%}
+    {% block content %} {% endblock %}
+    {% include 'footer.html'%}
 </body>
 </html>

@@ -26,7 +26,7 @@ class University(db.Model):
     details = db.Column(db.String())
     location = db.Column(db.String())
 
-    #degrees = db.relationship('degrees', secondary=Prerequisites, back_populates='degrees')
+    #degrees = db.relationship('Degrees', secondary=Prerequisites, back_populates='Degrees')
 
 class Careers(db.Model):
     __tablename__ = 'Careers'
@@ -35,5 +35,3 @@ class Careers(db.Model):
     pay = db.Column(db.Integer())
 
     #degrees = db.relationship('degrees', secondary=Jobs, back_populates='degrees')
-
-#db.create_all()

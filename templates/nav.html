@@ -1,0 +1,43 @@
+<nav>
+  <ul>
+    <li><a href="{{ url_for('home')}}">Home</a></li>
+    <li><a href="{{ url_for('university', id=1)}}">Uni 1</a></li>
+    <li><a href="#">#</a></li>
+  </ul>
+</nav>
+
+
+<!-- <h2>
+    <a href="{{ url_for('home') }}">HOME</a> - <a href="{{ url_for('university', id=1) }}">Uni 1</a> - ANY OTHER MENU ITEMS - see nav.html
+  </h2> -->
+
+  
+  <!-- the first one could just be written as:
+  
+    <a href="/">HOME</a>
+  
+  'url_for' is used along with 'home' (the name of the
+  function attached to the '/' route) because if we ever
+  change the name of the home route it won't matter - it
+  references it by the function regardless of the route name.
+  
+  --snippet from routes.py--
+  
+  @app.route('/')      # this is the '/' route
+  def home():          # this is its function
+  
+  This is not mandatory, its just best practice. 
+  
+  
+  Also, a link to Pizza 1 is a terrible idea - its just there
+  to show you that it works.  There should be a page with all
+  the pizzas listed, and each pizza on that page should be
+  linked to its details page, something like:
+  {#
+  
+  <a href='/pizza/{{ pizza.id }}'>Pizza name: {{ pizza.name }}</a>
+  
+  #}
+  The NAV bar should probably only link to the All Pizzas page.
+  -->
+  

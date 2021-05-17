@@ -8,3 +8,4 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # SQLALCHEMY_ECHO shows SQL commands used to execute a query
     SQLALCHEMY_ECHO = False
+    DEBUG = True
