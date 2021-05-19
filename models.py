@@ -9,15 +9,15 @@ Prerequisites = db.Table('Prerequisites', db.Model.metadata,
     db.Column('id', db.Integer, primary_key=True),
     db.Column('name', db.String()),
     db.Column('uid', db.ForeignKey('University.id')),
-    db.Column('did', db.ForeignKey('Degrees.id')))
+    db.Column('did', db.ForeignKey('Degree.id')))
 
-class Degrees(db.Model):
-    __tablename__ = 'Degrees'
+class Degree(db.Model):
+    __tablename__ = 'Degree'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     cost = db.Column(db.Integer())
-
-    #universities = db.relationship('degrees', secondary=Prerequisites, back_populates='universities')
+    university = db.Column(db.ForeignKey('University.id'))
+    universities = db.relationship('University', secondary=Prerequisites, back_populates='degrees')
 
 class University(db.Model):
     __tablename__ = 'University'
@@ -26,7 +26,7 @@ class University(db.Model):
     details = db.Column(db.String())
     location = db.Column(db.String())
 
-    #degrees = db.relationship('Degrees', secondary=Prerequisites, back_populates='Degrees')
+    degrees = db.relationship('Degree', secondary=Prerequisites, back_populates='universities')
 
 class Careers(db.Model):
     __tablename__ = 'Careers'

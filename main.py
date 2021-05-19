@@ -13,7 +13,6 @@ import models
 
 @app.route('/')
 def home():
-    print(app.config)
     return render_template('home.html')
 
 
@@ -22,5 +21,24 @@ def university(id):
   uni = models.University.query.filter_by(id=id).first_or_404()
   return render_template('university.html', uni = uni)
 
+@app.route('/universities')
+def universities:
+  return 'universities'
+
+
+@app.route('/degree/<int:id>')
+def degree(id):
+  degree = models.Degree.query.filter_by(id=id).first_or_404()
+  return render_template('degree.html', degree = degree)
+
+@app.route('/degrees')
+def degrees():
+  degrees = models.Degree.query.all()
+  return render_template('degrees.html', degrees = degrees)
+
+
+@app.route('/jobs')
+def jobs():
+  return 'jobs'
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])
