@@ -22,13 +22,14 @@ def university(id):
   return render_template('university.html', uni = uni)
 
 @app.route('/universities')
-def universities:
+def universities():
   return 'universities'
 
 
 @app.route('/degree/<int:id>')
 def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
+  print(dir(degree))
   return render_template('degree.html', degree = degree)
 
 @app.route('/degrees')
@@ -40,5 +41,7 @@ def degrees():
 @app.route('/jobs')
 def jobs():
   return 'jobs'
+
+  
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])
