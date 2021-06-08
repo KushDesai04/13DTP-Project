@@ -10,7 +10,6 @@ db =  SQLAlchemy(app)
 import models
 
 
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -18,8 +17,9 @@ def home():
 
 @app.route('/university/<int:id>')
 def university(id):
-  uni = models.University.query.filter_by(id=id).first_or_404()
-  return render_template('university.html', uni = uni)
+  university = models.University.query.filter_by(id=id).first_or_404()
+  return render_template('university.html', university = university)
+
 
 @app.route('/universities')
 def universities():
@@ -29,8 +29,9 @@ def universities():
 @app.route('/degree/<int:id>')
 def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
-  print(dir(degree))
-  return render_template('degree.html', degree = degree)
+  #universities = models.Degree.query.filter_by(dig=id).all()
+  return render_template('degree.html', degree = degree)#, universities=universities)
+
 
 @app.route('/degrees')
 def degrees():

@@ -3,6 +3,9 @@
 
 <h2>All Degrees</h2>
 {% for degree in degrees %}
-<p>{{ degree.name }}, {{ university.name }}</p>
+<!-- <p>{{ degree.name }}, {% for university in degree.universities %} {{ university.name }}, {% endfor %}</p> -->
+<a href="{{ url_for('degree', id= degree.id) }}">{{ degree.name }}</a>
+<br>
+
 {% endfor %}
 {% endblock %}

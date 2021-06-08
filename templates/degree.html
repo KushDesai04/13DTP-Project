@@ -2,5 +2,11 @@
 {% block content %}
 
 <h2>Degree Information</h2>
-<p>Bachelor of {{degree.name}} - {{ degree.universities[0].name }}</p>
+
+<p>Bachelor of {{degree.name}} - </p>
+
+{% for university in degree.universities %}
+{{ university.name }} <br>
+
+{% endfor %}
 {% endblock %}

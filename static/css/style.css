@@ -21,22 +21,9 @@
  * Header block
  **/
 header {
-  width: 100%;
-  min-height: 20vh;
-  margin-top: 10vh;
+  color: cornflowerblue;
 }
 
-header .title{
-    text-align: center;
-    padding-top: 8vh;
-    font-size: 32px;
-    color: #b488da;
-    font-weight: 600;
-}
-
-header h1{
-  font-size: 60px;
-}
 
 /**
  * Navigation block
