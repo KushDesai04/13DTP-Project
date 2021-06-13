@@ -9,6 +9,10 @@ db =  SQLAlchemy(app)
 
 import models
 
+@app.context_processor
+def context_processor():
+  uni = models.University.query.all()
+  return dict(uni=uni)
 
 @app.route('/')
 def home():
@@ -23,14 +27,15 @@ def university(id):
 
 @app.route('/universities')
 def universities():
-  return 'universities'
+  university = models.University.all()
+  return render_template('university.html', university = university)
 
 
 @app.route('/degree/<int:id>')
 def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
-  #universities = models.Degree.query.filter_by(dig=id).all()
-  return render_template('degree.html', degree = degree)#, universities=universities)
+  universities = degree.universities
+  return render_template('degree.html', degree = degree, universities = universities)
 
 
 @app.route('/degrees')
@@ -43,6 +48,6 @@ def degrees():
 def jobs():
   return 'jobs'
 
-  
+
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])

@@ -1,8 +1,18 @@
 <nav>
   <ul>
     <li><a href="{{ url_for('home') }}">Home</a></li>
-    <li><a href="{{ url_for('universities') }}">Universities</a></li>
     <li><a href="{{ url_for('degrees') }}">Degrees</a></li>
+    <li>
+      <div class="dropdown">
+        <button class="dropbtn">Universities &#x25BC</button>
+        <div class="dropdown-content">
+          {% for uni in uni %}
+            <a href="{{ url_for('university', id=uni.id )}}">{{uni.name}}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </li>
   </ul>
 </nav>
   
+<!-- <a href="{{ url_for('universities') }}">Universities</a> -->

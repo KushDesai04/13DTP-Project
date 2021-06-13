@@ -7,8 +7,10 @@
     <link rel='stylesheet' href='/static/css/style.css'>
 </head>
 <body>
-    {% include 'header.html'%}
+    <div class = "top">
     {% include 'nav.html'%}
+    {% include 'header.html'%}
+    </div>
     {% block content %} {% endblock %}
     {% include 'footer.html'%}
 </body>

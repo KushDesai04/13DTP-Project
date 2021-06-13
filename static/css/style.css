@@ -16,12 +16,19 @@
   font-family: 'Exo 2', sans-serif;
 }
 
- 
+
+.top{
+  background: cornflowerblue;
+  min-height: 8vh;
+}
 /**
  * Header block
  **/
 header {
-  color: cornflowerblue;
+  float: left;
+  width: 30%;
+  color: white;
+  height: auto;
 }
 
 
@@ -33,64 +40,79 @@ header {
 /* by using "nav ul" instead of just "ul", only an unordered list in the nav bar will take on this styling, meaning it doesn't mess up unordered lists in the main content */
 
 nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 75%);
-
-    max-height: 12vh;
-    min-height: 8vh;
-    z-index: 1; /* this is needed to force the text and other things to show in front*/
+  float: right;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  
 }
 
 nav ul{
-    list-style-type: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* hide things that fall out the box*/
+  list-style-type: none;
+  display: flex;
+  margin: 0 auto;
 }
 
 
 nav ul li {
   display: inline-block;
-  padding: 0px 5px;
-  margin: 0px 10px;
-  transition: all 0.4s;
+  margin: auto 50px auto 50px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  padding: 3vh 5px;
-  display: block;
+  transition: 0.5s ease;
+}
+
+nav ul li a:hover {
+  font-size: larger;
+}
+/* Dropdown Button */
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  background: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  padding: 1vh 5px;
+  display: inline-block;
   position: relative;
-  transition: all 0.4s;
-  
 }
 
-/* Create the underline effect on hover */
-nav a::before{
-  background-color: #b488da;
-}
-
-nav a::before{
-  content : "";
-  transition: all 0.47s ease-in-out;
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
   position: absolute;
-  right: 50%;
-  left: 50%;
-  bottom: 2vh;
-  height: 3px;
-
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-/* When hovered, make the line go to the left and right ends from the middle */
-nav a:hover::before{
-  right: 0;
-  left: 0;
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
 /**
  * MAIN Content block
  **/
@@ -118,4 +140,42 @@ footer h2 {
 footer p {
   color: rgb(161, 161, 161);
   font-size: 80%;
+}
+
+/* Media Queries to handle smaller screens - try scaling the width of the screen to see what happens... and try it on your mobile! */
+@media (max-width: 900px) {
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 150%;
+  }
+
+  header {
+    background-size: contain;
+  }
+
+  nav li {
+    font-size: 100%;
+  }
+}
+
+
+/* too small for a logo image */
+@media (max-width: 600px) {
+
+  header {
+    background-image: none;
+  }
+}
+
+
+/* Teddy images make text wrap weirdly with a small screen */
+@media (max-width: 400px) {
+
+  img {
+    width: 95%;
+  }
 }
