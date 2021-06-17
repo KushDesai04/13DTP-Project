@@ -5,27 +5,34 @@
 <!-- Filtering system -->
 <form class = 'filter' method = 'POST'>
 <div>
-<h3>Filter by</h3>
-
-{% for university in universities %}
-<input type = 'checkbox' name = 'universities' value = '{{ university.name }}'> 
-<label>{{ university.name }}</label>
+    <h3>Filter by</h3>
+    <!-- FILTER BY UNIVERSITY -->
+    {% for university in universities %}
+        <input type = 'checkbox' name = 'universities' value = '{{ university.name }}'> 
+        <label>{{ university.name }}</label>
+        <br>
+    {% endfor %}
+</div>
 <br>
-{% endfor %}
+
+<div>
+    <!-- FILTER BY SUBJECT-->
+    {% for subject in subjects %}
+        <input type = 'checkbox' name = 'subject' value = '{{ subject.name }}'> 
+        <label>{{ subject.name }}</label>
+        <br>
+    {% endfor %}
 </div>
 
-
-
-<br>
 
 <div>
 <!-- ORDER BY -->
 <h3>Order by</h3>
-<input type = 'radio' name = 'order' value = 'name'> 
+<input type = 'radio' name = 'order' value = 'ASC' {% if order == "ASC" %} checked {% endif %}> 
 <label>A-Z</label>
 <br>
 
-<input type = 'radio' name = 'order' value = 'name desc'>
+<input type = 'radio' name = 'order' value = 'DESC' {% if order == "DESC" %} checked {% endif %}>
 <label>Z-A</label>
 </div>
 

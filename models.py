@@ -1,8 +1,11 @@
 from main import db
 
-Jobs = db.Table('Jobs', db.Model.metadata, 
-    db.Column('cid',db.Integer, db.ForeignKey('Careers.id')), 
-    db.Column('did',db.Integer, db.ForeignKey('Degrees.id')))
+Prerequisites = db.Table('Jobs', db.Model.metadata, 
+    db.Column('uid',db.Integer, db.ForeignKey('University.id')), 
+    db.Column('did',db.Integer, db.ForeignKey('Degrees.id')),
+    db.Column('subject',db.Integer, db.ForeignKey('Subject.id')),
+    db.Column('rankscore',db.Integer),
+    db.Column('credits',db.Integer))
 
 
 UniversityDegree = db.Table('UniversityDegree', db.Model.metadata, 
@@ -24,12 +27,8 @@ class University(db.Model):
 
     degrees = db.relationship('Degree', secondary=UniversityDegree, back_populates='universities')
 
-class Careers(db.Model):
-    __tablename__ = 'Careers'
+class Subject(db.Model):
+    __tablename__ = 'Subject'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
-    pay = db.Column(db.Integer())
-
-    '''
-    computer science - auckland, canterbury
-    '''
+    level = db.Column(db.Integer())
