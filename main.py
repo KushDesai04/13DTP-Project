@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
-from config import Config
+from config import Config                 
 
 
 app = Flask(__name__)
@@ -27,7 +27,7 @@ def university(id):
 
 @app.route('/universities')
 def universities():
-  university = models.University.all()
+  university = models.University.query.all()
   return render_template('university.html', university = university)
 
 
@@ -38,11 +38,16 @@ def degree(id):
   return render_template('degree.html', degree = degree, universities = universities)
 
 
-@app.route('/degrees')
+@app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
-  degrees = models.Degree.query.all()
-  return render_template('degrees.html', degrees = degrees)
+  degrees = models.Degree.query.order_by(models.Degree.name).all()
+  universities = models.University.query.all()
 
+  if request.method == "POST":
+    university_filter = request.form['universities']
+    degrees = models.Degree.query.filter(models.Degree.universities.name.in_(university_filter)).all()
+    print(degrees)
+  return render_template('degrees.html', degrees = degrees, universities = universities)
 
 @app.route('/jobs')
 def jobs():
