@@ -7,22 +7,19 @@
 <div>
     <h3>Filter by</h3>
     <!-- FILTER BY UNIVERSITY -->
-    {% for university in universities %}
-        <input type = 'checkbox' name = 'universities' value = '{{ university.name }}'> 
-        <label>{{ university.name }}</label>
+        <input type = 'checkbox' name = 'universities' value = 'University of Auckland'> 
+        <label>University of Auckland</label>
         <br>
-    {% endfor %}
+
+        <input type = 'checkbox' name = 'universities' value = 'University of Canterbury'> 
+        <label>University of Canterbury</label>
+        <br>
+
+        <input type = 'checkbox' name = 'universities' value = 'University of Otago'> 
+        <label>University of Otago</label>
+        <br>
 </div>
 <br>
-
-<div>
-    <!-- FILTER BY SUBJECT-->
-    {% for subject in subjects %}
-        <input type = 'checkbox' name = 'subject' value = '{{ subject.name }}'> 
-        <label>{{ subject.name }}</label>
-        <br>
-    {% endfor %}
-</div>
 
 
 <div>
@@ -39,18 +36,19 @@
 
 <!-- Buttons -->
 <input type = 'submit'>
-
 <input type = 'submit' name='reset' value='Reset'>
 </form>
 
+
+
 <!-- Display Degrees -->
 <div class = 'grid-container'>
-{% for degree in degrees %}
-
-<div class = 'grid-item'>
-    <a href="{{ url_for('degree', id= degree.id) }}">{{ degree.name }}</a>
-</div> <!-- closing grid-item-->
-
+{% for university in degrees %}
+    {% for degree in university %}
+        <div class = 'grid-item'>
+            <a href="{{ url_for('degree', id= degree.id) }}">{{ degree.name }}</a>
+        </div> <!-- closing grid-item-->
+    {% endfor %}
 {% endfor %}
 </div> <!-- closing grid-container-->
 

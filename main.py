@@ -42,7 +42,6 @@ def degree(id):
 def degrees():
   degrees = models.Degree.query.order_by(models.Degree.name).all()
   universities = models.University.query.all()
-  print(universities)
   subjects = models.Subject.query.all()
   order = "ASC"
 
@@ -51,13 +50,15 @@ def degrees():
     order = request.form["order"]
     print(order, type(order))
     university_filter = request.form['universities']
+    university_filter = ['University of Auckland', 'University of Canterbury']
     if order == "DESC":
-      degrees = models.Degree.query.filter(models.Degree.name.in_(["Arts", "Music"])).order_by(models.Degree.name.desc()).all()
+      #degrees = models.Degree.query.filter(models.Degree.universities.in_(university_filter)).order_by(models.Degree.name.desc()).all()
+      degree_university = models.University.query.filter(models.University.name.in_(university_filter)).all()
     else:
-      degrees = models.Degree.query.filter(models.Degree.name.in_(["Arts", "Music"])).order_by(models.Degree.name).all()
-    print(degrees)
+      degree_university = models.University.query.filter(models.University.name.in_(university_filter)).all()
 
-  
+    degrees = [degree.degrees for degree in degree_university]
+    print(degrees)
   return render_template('degrees.html', degrees = degrees, universities = universities, order=order, subjects=subjects)
 
 @app.route('/jobs')
