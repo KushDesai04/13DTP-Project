@@ -40,30 +40,23 @@ def degree(id):
 
 @app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
-  degrees = models.Degree.query.order_by(models.Degree.name).all()
+  
+  degrees = {}
   universities = models.University.query.all()
+  for university in universities:
+    degrees[university.name]= university.degrees
+  
   subjects = models.Subject.query.all()
-  order = "ASC"
-
 
   if request.method == "POST":
-    order = request.form["order"]
-    print(order, type(order))
-    university_filter = request.form['universities']
-    university_filter = ['University of Auckland', 'University of Canterbury']
-    if order == "DESC":
-      #degrees = models.Degree.query.filter(models.Degree.universities.in_(university_filter)).order_by(models.Degree.name.desc()).all()
-      degree_university = models.University.query.filter(models.University.name.in_(university_filter)).all()
-    else:
-      degree_university = models.University.query.filter(models.University.name.in_(university_filter)).all()
+    university_filter = request.form.getlist('universities')
+    universities = models.University.query.filter(models.University.name.in_(university_filter)).all()
 
-    degrees = [degree.degrees for degree in degree_university]
-    print(degrees)
+    degrees = {}
+    for university in universities:
+      degrees[university.name]= university.degrees
+
   return render_template('degrees.html', degrees = degrees, universities = universities, order=order, subjects=subjects)
-
-@app.route('/jobs')
-def jobs():
-  return 'jobs'
 
 
 if __name__ == '__main__':

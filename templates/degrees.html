@@ -22,16 +22,6 @@
 <br>
 
 
-<div>
-<!-- ORDER BY -->
-<h3>Order by</h3>
-<input type = 'radio' name = 'order' value = 'ASC' {% if order == "ASC" %} checked {% endif %}> 
-<label>A-Z</label>
-<br>
-
-<input type = 'radio' name = 'order' value = 'DESC' {% if order == "DESC" %} checked {% endif %}>
-<label>Z-A</label>
-</div>
 
 
 <!-- Buttons -->
@@ -39,17 +29,16 @@
 <input type = 'submit' name='reset' value='Reset'>
 </form>
 
-
-
-<!-- Display Degrees -->
-<div class = 'grid-container'>
-{% for university in degrees %}
-    {% for degree in university %}
-        <div class = 'grid-item'>
-            <a href="{{ url_for('degree', id= degree.id) }}">{{ degree.name }}</a>
-        </div> <!-- closing grid-item-->
-    {% endfor %}
+{% for university, degrees in degrees.items() %}
+    <div class = 'grid-container'>
+        <h2 class="uni_name">{{university}}</h2>
+        {% for degree in degrees %}
+            <div class='grid-item'>
+                    <a href="{{ url_for('degree', id=degree.id )}}">{{degree.name}}</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endfor %}
-</div> <!-- closing grid-container-->
+
 
 {% endblock %}

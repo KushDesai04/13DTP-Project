@@ -1,12 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h2>Degree Information</h2>
+<h2>Bachelor of {{degree.name}} - </h2>
 
-<p>Bachelor of {{degree.name}} - </p>
-
+<p>Avaiable at:</p>
 {% for university in universities %}
-{{ university.name }} <br>
+<p>{{ university.name }}</p>
 {% endfor %}
 
 {% endblock %}
