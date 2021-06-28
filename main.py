@@ -16,7 +16,8 @@ def context_processor():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+  universities = models.University.query.all()
+  return render_template('home.html', universities = universities)
 
 
 @app.route('/university/<int:id>')
@@ -56,7 +57,7 @@ def degrees():
     for university in universities:
       degrees[university.name]= university.degrees
 
-  return render_template('degrees.html', degrees = degrees, universities = universities, order=order, subjects=subjects)
+  return render_template('degrees.html', degrees = degrees, universities = universities, subjects=subjects)
 
 
 if __name__ == '__main__':

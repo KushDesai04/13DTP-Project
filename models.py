@@ -16,6 +16,7 @@ class Degree(db.Model):
     __tablename__ = 'Degree'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
+    description = db.Column(db.String())
     universities = db.relationship('University', secondary=UniversityDegree, back_populates='degrees')
 
 class University(db.Model):

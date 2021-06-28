@@ -3,9 +3,11 @@
 
 <h2>Bachelor of {{degree.name}} - </h2>
 
-<p>Avaiable at:</p>
+<h3>Avaiable at:</h3>
 {% for university in universities %}
 <p>{{ university.name }}</p>
 {% endfor %}
 
+<h3>Description</h3>
+<p>{{ degree.description }}</p>
 {% endblock %}

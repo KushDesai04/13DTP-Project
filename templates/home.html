@@ -2,4 +2,12 @@
 {% block content %}
 
 <h2>Home Information</h2>
+
+<table>
+    {% for university in universities %}
+        <tr>
+            <td>{{ university.name }}</td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock %}
