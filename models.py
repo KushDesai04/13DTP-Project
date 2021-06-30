@@ -1,6 +1,6 @@
 from main import db
 
-Prerequisites = db.Table('Jobs', db.Model.metadata, 
+Prerequisites = db.Table('Prerequisites', db.Model.metadata, 
     db.Column('uid',db.Integer, db.ForeignKey('University.id')), 
     db.Column('did',db.Integer, db.ForeignKey('Degrees.id')),
     db.Column('subject',db.Integer, db.ForeignKey('Subject.id')),

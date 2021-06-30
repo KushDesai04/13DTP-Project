@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config                 
+from forms import SimpleForm
+
 
 
 app = Flask(__name__)
@@ -9,6 +11,7 @@ db =  SQLAlchemy(app)
 
 import models
 
+  
 @app.context_processor
 def context_processor():
   uni = models.University.query.all()
@@ -41,7 +44,7 @@ def degree(id):
 
 @app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
-  
+  form = SimpleForm()
   degrees = {}
   universities = models.University.query.all()
   for university in universities:
@@ -49,15 +52,19 @@ def degrees():
   
   subjects = models.Subject.query.all()
 
-  if request.method == "POST":
-    university_filter = request.form.getlist('universities')
-    universities = models.University.query.filter(models.University.name.in_(university_filter)).all()
-
+  if form.validate_on_submit():
+    university_filter = (form.test.data)
+    print(university_filter, type(university_filter))
+    universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
+    print(universities)
     degrees = {}
     for university in universities:
       degrees[university.name]= university.degrees
-
-  return render_template('degrees.html', degrees = degrees, universities = universities, subjects=subjects)
+  
+  else:
+    print(form.errors)
+    
+  return render_template('degrees.html', degrees = degrees, universities = universities, subjects=subjects, forms=form)
 
 
 if __name__ == '__main__':

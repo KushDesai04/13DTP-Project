@@ -3,21 +3,13 @@
 
 <h2>All Degrees</h2>
 <!-- Filtering system -->
-<form class = 'filter' method = 'POST'>
+<form class = 'filter' method = 'POST' action = '/degrees'>
 <div>
     <h3>Filter by</h3>
     <!-- FILTER BY UNIVERSITY -->
-        <input type = 'checkbox' name = 'universities' value = 'University of Auckland'> 
-        <label>University of Auckland</label>
-        <br>
-
-        <input type = 'checkbox' name = 'universities' value = 'University of Canterbury'> 
-        <label>University of Canterbury</label>
-        <br>
-
-        <input type = 'checkbox' name = 'universities' value = 'University of Otago'> 
-        <label>University of Otago</label>
-        <br>
+    {% for form in forms %}
+        {{ form }}
+    {% endfor %}
 </div>
 <br>
 

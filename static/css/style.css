@@ -124,6 +124,66 @@ main{
 
 }
 
+.universities {
+  width: 80%;
+  height: 50vh;
+  margin: 0 auto;
+}
+
+.universities tr:nth-child(odd){
+  background-color: rgba(0,0,0,0.2);
+}
+/* Filtering System */
+.filter{
+  width: 15%;
+  display: flex;
+  flex-direction: column; /* Make the divs go coloumn wise not row wise*/
+  border: 2px solid #b488da;
+  margin: 15px;
+  padding: 15px;
+  background-color:rgb(0,0,0,0.1);
+  float: left;
+}
+
+.filter label{
+  font-size: 11px;
+}
+/* Grid for all games */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
+  width: 80%;
+  float: right;
+  margin: 3vh auto;
+}
+
+.uni_name{
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+/* Every individual item in the grid */
+.grid-item {
+  border-radius: 10px;
+  text-align: center;
+  width: auto;
+  background-color:rgb(0,0,0,0.1);
+  margin: 10px;
+  height: 70px;
+  
+}
+
+.grid-item a{
+  color: black;
+  transition: all 0.3s ease-in-out;
+  padding: 5px;
+
+}
+.grid-item a:hover {
+  font-size: 20px;
+  color: cornflowerblue;
+}
+
 /**
  * Footer block
  **/
@@ -183,53 +243,3 @@ footer p {
 }
 
 
-/* Filtering System */
-.filter{
-  width: 15%;
-  display: flex;
-  flex-direction: column; /* Make the divs go coloumn wise not row wise*/
-  border: 2px solid #b488da;
-  margin: 15px;
-  padding: 15px;
-  background-color:rgb(0,0,0,0.1);
-  float: left;
-}
-
-.filter label{
-  font-size: 11px;
-}
-/* Grid for all games */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
-  width: 80%;
-  float: right;
-  margin: 3vh auto;
-}
-
-.uni_name{
-  grid-column-start: 1;
-  grid-column-end: 5;
-}
-
-/* Every individual item in the grid */
-.grid-item {
-  border-radius: 10px;
-  text-align: center;
-  width: auto;
-  background-color:rgb(0,0,0,0.1);
-  margin: 10px;
-  height: 70px;
-  
-}
-
-.grid-item a{
-  color: black;
-  transition: all 0.3s ease-in-out;
-  padding: 5px;
-
-}
-.grid-item a:hover {
-  font-size: 20px;
-  color: cornflowerblue;
-}
