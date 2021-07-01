@@ -32,6 +32,7 @@ def university(id):
 @app.route('/universities')
 def universities():
   university = models.University.query.all()
+  print(university)
   return render_template('university.html', university = university)
 
 
@@ -53,10 +54,25 @@ def degrees():
   subjects = models.Subject.query.all()
 
   if form.validate_on_submit():
-    university_filter = (form.test.data)
+    
+    if form.uni_data.data: 
+      university_filter = (form.uni_data.data)
+    else:
+      university_filter = [uni.name for uni in universities]
+    
+    if form.subject_data.data: 
+      subject_filter = (form.subject_data.data)
+    else:
+      subject_filter = [subject.name for subject in subjects]
+
+
     print(university_filter, type(university_filter))
+    print(subject_filter)
+
     universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
+    subjects = models.Subject.query.filter(models.Subject.id.in_(subject_filter)).all()
     print(universities)
+    print(subjects)
     degrees = {}
     for university in universities:
       degrees[university.name]= university.degrees

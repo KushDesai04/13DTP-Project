@@ -1,11 +1,11 @@
 from main import db
 
-Prerequisites = db.Table('Prerequisites', db.Model.metadata, 
-    db.Column('uid',db.Integer, db.ForeignKey('University.id')), 
-    db.Column('did',db.Integer, db.ForeignKey('Degrees.id')),
-    db.Column('subject',db.Integer, db.ForeignKey('Subject.id')),
-    db.Column('rankscore',db.Integer),
-    db.Column('credits',db.Integer))
+class Prerequisites(db.Model):
+    uid= db.Column(db.Integer, db.ForeignKey('University.id')),
+    did= db.Column(db.Integer, db.ForeignKey('Degrees.id'))
+    subject= db.Column(db.Integer, db.ForeignKey('Subject.id'))
+    rankscore= db.Column(db.Integer)
+    credits= db.Column(db.Integer)
 
 
 UniversityDegree = db.Table('UniversityDegree', db.Model.metadata, 
