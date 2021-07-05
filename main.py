@@ -55,28 +55,35 @@ def degrees():
 
   if form.validate_on_submit():
     
+    degrees = {}
+
     if form.uni_data.data: 
       university_filter = (form.uni_data.data)
+      print("with data:", university_filter)
     else:
-      university_filter = [uni.name for uni in universities]
+      university_filter = [str(uni.id) for uni in universities]
+      print(university_filter)
     
+    print(university_filter, type(university_filter))
+    universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
+
     if form.subject_data.data: 
       subject_filter = (form.subject_data.data)
+      subjects = models.Prerequisites.query.filter(models.Prerequisites.sid.in_(subject_filter)).all()
+      subjects = [subject.did for subject in subjects]
+      sub_degrees = models.Degree.query.filter(models.Degree.id.in_(subjects)).all()
+
+    
+      for university in universities:
+          temp_degrees = []
+          for degree in university.degrees:
+            if degree in sub_degrees:
+              temp_degrees.append(degree)
+          degrees[university.name]= temp_degrees
     else:
-      subject_filter = [subject.name for subject in subjects]
+      for university in universities:
+          degrees[university.name]= university.degrees
 
-
-    print(university_filter, type(university_filter))
-    print(subject_filter)
-
-    universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
-    subjects = models.Subject.query.filter(models.Subject.id.in_(subject_filter)).all()
-    print(universities)
-    print(subjects)
-    degrees = {}
-    for university in universities:
-      degrees[university.name]= university.degrees
-  
   else:
     print(form.errors)
     
