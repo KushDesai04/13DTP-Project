@@ -50,6 +50,14 @@ def degrees():
   universities = models.University.query.all()
   for university in universities:
     degrees[university.name]= university.degrees
+
+  degrees_test = models.Degree.query.all()
+  degrees_test_dict = {}
+
+  for degree in degrees_test:
+    degrees_test_dict[degree] = [university.name for university in degree.universities]
+  print('====================================================================================')
+  print(degrees_test_dict)
   
   subjects = models.Subject.query.all()
 
@@ -59,13 +67,18 @@ def degrees():
 
     if form.uni_data.data: 
       university_filter = (form.uni_data.data)
-      print("with data:", university_filter)
+      #print("with data:", university_filter)
     else:
       university_filter = [str(uni.id) for uni in universities]
-      print(university_filter)
+      #print(university_filter)
     
-    print(university_filter, type(university_filter))
+    #print(university_filter, type(university_filter))
     universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
+
+    ''' TODO: FILTER BY UNI DEGREES. COMPARE TWO LISTS AND CHECK IF ELEMENT IS SAME OR NOT'''
+    for degree in degrees_test:
+      unis = [university.name for university in degree.universities]
+      degrees_test_dict[degree] = [university.name for university in degree.universities]
 
     if form.subject_data.data: 
       subject_filter = (form.subject_data.data)
