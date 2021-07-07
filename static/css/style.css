@@ -169,7 +169,7 @@ main{
   width: auto;
   background-color:rgb(0,0,0,0.1);
   margin: 10px;
-  height: 70px;
+  height: 200px;
   
 }
 
@@ -184,6 +184,12 @@ main{
   color: cornflowerblue;
 }
 
+.hidden {
+  display: none;
+}
+.grid-item a:hover + .hidden{
+  display: block;
+}
 /**
  * Footer block
  **/

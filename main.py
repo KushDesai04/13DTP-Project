@@ -4,18 +4,19 @@ from config import Config
 from forms import SimpleForm
 
 
-
 app = Flask(__name__)
 app.config.from_object(Config)
 db =  SQLAlchemy(app)
 
+
 import models
 
-  
+
 @app.context_processor
 def context_processor():
   uni = models.University.query.all()
   return dict(uni=uni)
+
 
 @app.route('/')
 def home():
@@ -46,39 +47,23 @@ def degree(id):
 @app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
   form = SimpleForm()
-  degrees = {}
-  universities = models.University.query.all()
-  for university in universities:
-    degrees[university.name]= university.degrees
-
-  degrees_test = models.Degree.query.all()
-  degrees_test_dict = {}
-
-  for degree in degrees_test:
-    degrees_test_dict[degree] = [university.name for university in degree.universities]
-  print('====================================================================================')
-  print(degrees_test_dict)
-  
+  degrees = models.Degree.query.all()
   subjects = models.Subject.query.all()
 
   if form.validate_on_submit():
     
-    degrees = {}
-
+    deg_set = set()
     if form.uni_data.data: 
       university_filter = (form.uni_data.data)
-      #print("with data:", university_filter)
-    else:
-      university_filter = [str(uni.id) for uni in universities]
-      #print(university_filter)
-    
-    #print(university_filter, type(university_filter))
-    universities = models.University.query.filter(models.University.id.in_(university_filter)).all()
+      print(university_filter)
 
-    ''' TODO: FILTER BY UNI DEGREES. COMPARE TWO LISTS AND CHECK IF ELEMENT IS SAME OR NOT'''
-    for degree in degrees_test:
-      unis = [university.name for university in degree.universities]
-      degrees_test_dict[degree] = [university.name for university in degree.universities]
+
+    # Filter degrees by uni using set
+    for degree in degrees:
+      unis = [university.id for university in degree.universities]
+      for uni in unis:
+        if str(uni) in university_filter:
+          deg_set.add(degree)
 
     if form.subject_data.data: 
       subject_filter = (form.subject_data.data)
@@ -86,21 +71,15 @@ def degrees():
       subjects = [subject.did for subject in subjects]
       sub_degrees = models.Degree.query.filter(models.Degree.id.in_(subjects)).all()
 
-    
-      for university in universities:
-          temp_degrees = []
-          for degree in university.degrees:
-            if degree in sub_degrees:
-              temp_degrees.append(degree)
-          degrees[university.name]= temp_degrees
+      degrees = list(set(deg_set) & set(sub_degrees))
+      print(degrees)
     else:
-      for university in universities:
-          degrees[university.name]= university.degrees
+      degrees = deg_set
 
   else:
     print(form.errors)
     
-  return render_template('degrees.html', degrees = degrees, universities = universities, subjects=subjects, forms=form)
+  return render_template('degrees.html', degrees = degrees, forms=form)
 
 
 if __name__ == '__main__':

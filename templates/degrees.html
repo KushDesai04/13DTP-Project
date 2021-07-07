@@ -21,16 +21,19 @@
 <input type = 'submit' name='reset' value='Reset'>
 </form>
 
-{% for university, degrees in degrees.items() %}
-    <div class = 'grid-container'>
-        <h2 class="uni_name">{{university}}</h2>
-        {% for degree in degrees %}
-            <div class='grid-item'>
-                    <a href="{{ url_for('degree', id=degree.id )}}">{{degree.name}}</a>
-            </div>
-        {% endfor %}
-    </div>
-{% endfor %}
+<div class = 'grid-container'>
+    {% for degree in degrees %}
+        <div class='grid-item'>
+            <a href="{{ url_for('degree', id=degree.id )}}">{{degree.name}}</a>
+            <span class="hidden">
+                {% for university in degree.universities %}
+                    {{university.name}}
+                {% endfor %}
+            </span>
+        </div>
+
+    {% endfor %}
+</div>
 
 
 {% endblock %}
