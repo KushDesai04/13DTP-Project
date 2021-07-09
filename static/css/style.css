@@ -169,25 +169,25 @@ main{
   width: auto;
   background-color:rgb(0,0,0,0.1);
   margin: 10px;
-  height: 200px;
+  height: 100px;
   
 }
 
-.grid-item a{
+a .grid-item p{
   color: black;
   transition: all 0.3s ease-in-out;
-  padding: 5px;
-
 }
-.grid-item a:hover {
-  font-size: 20px;
+a:hover .grid-item p {
+  -webkit-transform: scale(1.2) translateY(0);
   color: cornflowerblue;
+  /* transform: translateY(0); */
 }
 
-.hidden {
+a .grid-item .hidden {
   display: none;
+  color: black;
 }
-.grid-item a:hover + .hidden{
+a:hover .grid-item .hidden{
   display: block;
 }
 /**

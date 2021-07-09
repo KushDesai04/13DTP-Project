@@ -78,7 +78,8 @@ def degrees():
 
   else:
     print(form.errors)
-    
+  
+  degrees = sorted(degrees, key=lambda degree: degree.name)
   return render_template('degrees.html', degrees = degrees, forms=form)
 
 
