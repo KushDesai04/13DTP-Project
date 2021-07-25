@@ -1,3 +1,8 @@
+# Degrees website
+# Maked by KDawg
+# Maken on term 1
+# Lisence: $5 yo
+
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config                 
