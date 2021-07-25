@@ -16,10 +16,11 @@
   font-family: 'Exo 2', sans-serif;
 }
 
-a{
+a {
   text-decoration: none;
 }
-.top{
+
+.top {
   background: cornflowerblue;
   min-height: 8vh;
 }
@@ -186,6 +187,7 @@ a:hover .grid-item p {
 a .grid-item .hidden {
   display: none;
   color: black;
+  font-size: 10px;
 }
 a:hover .grid-item .hidden{
   display: block;

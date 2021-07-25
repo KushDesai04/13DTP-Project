@@ -11,25 +11,34 @@ db =  SQLAlchemy(app)
 
 import models
 
-
+# sends uni to every page but is used in nav
 @app.context_processor
 def context_processor():
   uni = models.University.query.all()
   return dict(uni=uni)
 
 
+# Reroute when a 404 error is found
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+# Home page
 @app.route('/')
 def home():
   universities = models.University.query.all()
   return render_template('home.html', universities = universities)
 
 
+# Indiviudual uni page
 @app.route('/university/<int:id>')
 def university(id):
   university = models.University.query.filter_by(id=id).first_or_404()
   return render_template('university.html', university = university)
 
 
+# All unis page
 @app.route('/universities')
 def universities():
   university = models.University.query.all()
@@ -37,13 +46,14 @@ def universities():
   return render_template('university.html', university = university)
 
 
+# Indiviudual degree page
 @app.route('/degree/<int:id>')
 def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
   universities = degree.universities
   return render_template('degree.html', degree = degree, universities = universities)
 
-
+# All degrees page
 @app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
   form = SimpleForm()
@@ -51,35 +61,47 @@ def degrees():
   subjects = models.Subject.query.all()
 
   if form.validate_on_submit():
-    
-    deg_set = set()
+    # Empty list to store degrees filtered by university
+    uni_degrees = []
+
     if form.uni_data.data: 
+      # Get uni id from form
       university_filter = (form.uni_data.data)
       print(university_filter)
 
-
-    # Filter degrees by uni using set
-    for degree in degrees:
-      unis = [university.id for university in degree.universities]
-      for uni in unis:
-        if str(uni) in university_filter:
-          deg_set.add(degree)
+      # Filter degrees by uni using set
+      for degree in degrees:
+        unis = [university.id for university in degree.universities]
+        for uni in unis:
+          if str(uni) in university_filter:
+            uni_degrees.add(degree)
+    
+    else:
+      deg_set = set(degrees)
 
     if form.subject_data.data: 
+      # Get subject ids from form
       subject_filter = (form.subject_data.data)
       subjects = models.Prerequisites.query.filter(models.Prerequisites.sid.in_(subject_filter)).all()
+
+      # Get degree id for every subject filtered 
       subjects = [subject.did for subject in subjects]
       sub_degrees = models.Degree.query.filter(models.Degree.id.in_(subjects)).all()
 
-      degrees = list(set(deg_set) & set(sub_degrees))
+      # Get degrees that are in both sets
+      degrees = list(set(uni_degrees) & set(sub_degrees))
       print(degrees)
+    
+    # If no subject filters:
     else:
-      degrees = deg_set
+      degrees = uni_degrees
 
   else:
     print(form.errors)
   
+  # Sort degrees by name
   degrees = sorted(degrees, key=lambda degree: degree.name)
+
   return render_template('degrees.html', degrees = degrees, forms=form)
 
 

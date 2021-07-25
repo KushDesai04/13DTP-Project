@@ -6,7 +6,7 @@
 <table class = "universities">
     {% for university in universities %}
         <tr>
-            <td>{{ university.name }}</td>
+            <td><a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a></td>
         </tr>
     {% endfor %}
 </table>
