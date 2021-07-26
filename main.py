@@ -16,7 +16,7 @@ db =  SQLAlchemy(app)
 
 import models
 
-# sends uni to every page but is used in nav
+# Sends uni to every page but is used in nav
 @app.context_processor
 def context_processor():
   uni = models.University.query.all()
@@ -56,6 +56,8 @@ def universities():
 def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
   universities = degree.universities
+  subjects = degree.subjects
+  print(subjects)
   return render_template('degree.html', degree = degree, universities = universities)
 
 # All degrees page
@@ -79,10 +81,10 @@ def degrees():
         unis = [university.id for university in degree.universities]
         for uni in unis:
           if str(uni) in university_filter:
-            uni_degrees.add(degree)
+            uni_degrees.append(degree)
     
     else:
-      deg_set = set(degrees)
+      uni_degrees = set(degrees)
 
     if form.subject_data.data: 
       # Get subject ids from form

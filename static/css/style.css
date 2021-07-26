@@ -125,6 +125,17 @@ main{
 
 }
 
+.degree {
+  margin: 0 auto;
+  border: 1px solid black;
+  width: 50%;
+  padding: 5px;
+}
+
+.title{
+  text-align: center;
+}
+
 .universities {
   width: 80%;
   height: 50vh;

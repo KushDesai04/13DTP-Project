@@ -1,21 +1,9 @@
 from main import db
 
-class Prerequisites(db.Model):
-    __tablename__ = 'Prerequisites'
-    
-    # Schema
-    id = db.Column(db.Integer, primary_key=True)
-    uid= db.Column(db.Integer, db.ForeignKey('University.id'))
-    did= db.Column(db.Integer, db.ForeignKey('Degrees.id'))
-    sid= db.Column(db.Integer, db.ForeignKey('Subject.id'))
-    rankscore= db.Column(db.Integer)
-    credits= db.Column(db.Integer)
-
 
 UniversityDegree = db.Table('UniversityDegree', db.Model.metadata, 
     db.Column('uid', db.ForeignKey('University.id')),
     db.Column('did', db.ForeignKey('Degree.id')))
-
 
 class Degree(db.Model):
     __tablename__ = 'Degree'
@@ -27,7 +15,7 @@ class Degree(db.Model):
 
     # Relations
     universities = db.relationship('University', secondary=UniversityDegree, back_populates='degrees')
-    #subjects = db.relationship('Subject', secondary=Prerequisites, back_populates='degrees')
+    subjects = db.relationship('Prerequisites', back_populates='subjects')
 
 
 class University(db.Model):
@@ -52,4 +40,19 @@ class Subject(db.Model):
     level = db.Column(db.Integer())
 
     # Relations
-    # degrees = db.relationship('Degree', secondary=Prerequisites, back_populates='subjects')
+    degrees = db.relationship('Prerequisites', back_populates='subjects')
+
+class Prerequisites(db.Model):
+    __tablename__ = 'Prerequisites'
+    
+    # Schema
+    id = db.Column(db.Integer, primary_key=True)
+    uid= db.Column(db.Integer, db.ForeignKey('University.id'))
+    did= db.Column(db.Integer, db.ForeignKey('Degrees.id'))
+    sid= db.Column(db.Integer, db.ForeignKey('Subject.id'))
+    rankscore= db.Column(db.Integer)
+    credits= db.Column(db.Integer)
+
+    subjects = db.relationship('Subject', back_populates='degrees')
+    degrees = db.relationship('Degree', back_populates='subjects')
+
