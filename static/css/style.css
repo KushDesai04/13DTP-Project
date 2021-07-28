@@ -150,7 +150,7 @@ main{
   width: 15%;
   display: flex;
   flex-direction: column; /* Make the divs go coloumn wise not row wise*/
-  border: 2px solid #b488da;
+  border: 2px solid cornflowerblue;
   margin: 15px;
   padding: 15px;
   background-color:rgb(0,0,0,0.1);
@@ -167,6 +167,7 @@ main{
   width: 80%;
   float: right;
   margin: 3vh auto;
+  position: relative;
 }
 
 .uni_name{
@@ -182,26 +183,30 @@ main{
   background-color:rgb(0,0,0,0.1);
   margin: 10px;
   height: 100px;
-  
+  overflow: hidden;
+  position: relative;
+  text-align: center;
 }
 
 a .grid-item p{
   color: black;
   transition: all 0.3s ease-in-out;
-}
-a:hover .grid-item p {
-  -webkit-transform: scale(1.2) translateY(0);
-  color: cornflowerblue;
-  /* transform: translateY(0); */
+  margin: auto 0;
+  opacity: 1;
 }
 
-a .grid-item .hidden {
-  display: none;
-  color: black;
-  font-size: 10px;
+a:hover .grid-item p {
+  color: cornflowerblue;
+  opacity: 0;
 }
-a:hover .grid-item .hidden{
-  display: block;
+
+a .grid-item .overlay {
+  opacity: 0;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+a:hover .grid-item .overlay {
+  opacity: 1;
 }
 /**
  * Footer block

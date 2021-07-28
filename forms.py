@@ -15,4 +15,3 @@ class SimpleForm(FlaskForm):
 #   print(uni)
   uni_data = MultiCheckboxField('Label', choices=uni)
   subject_data = MultiCheckboxField('Label', choices=subject)
-  submit = SubmitField()

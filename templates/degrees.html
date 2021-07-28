@@ -13,12 +13,8 @@
 </div>
 <br>
 
-
-
-
 <!-- Buttons -->
 <input type = 'submit'>
-<input type = 'submit' name='reset' value='Reset'>
 </form>
 
 <div class = 'grid-container'>
@@ -26,7 +22,7 @@
         <a href="{{ url_for('degree', id=degree.id )}}">
         <div class='grid-item'>
             <p>{{degree.name}}</p>
-            <span class="hidden">
+            <span class="overlay">
                 {% for university in degree.universities %}
                     {{university.name}}<br>
                 {% endfor %}
