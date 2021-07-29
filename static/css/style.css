@@ -157,8 +157,9 @@ main{
   float: left;
 }
 
-.filter label{
-  font-size: 11px;
+.filter .filter_item ul li{
+  list-style-type: none;
+  font-size: 0.7vw;
 }
 /* Grid for all games */
 .grid-container {
@@ -166,7 +167,6 @@ main{
   grid-template-columns: repeat(4, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
   width: 80%;
   float: right;
-  margin: 3vh auto;
   position: relative;
 }
 
@@ -182,17 +182,20 @@ main{
   width: auto;
   background-color:rgb(0,0,0,0.1);
   margin: 10px;
-  height: 100px;
+  height: 20vh;
   overflow: hidden;
   position: relative;
   text-align: center;
+  font-size: 1vw;
+  
 }
 
 a .grid-item p{
   color: black;
   transition: all 0.3s ease-in-out;
-  margin: auto 0;
   opacity: 1;
+  padding: 5px;
+  height: 10px;
 }
 
 a:hover .grid-item p {
@@ -203,6 +206,8 @@ a:hover .grid-item p {
 a .grid-item .overlay {
   opacity: 0;
   transition: all 0.4s ease-in-out 0s;
+  position: relative;
+  top: 0;
 }
 
 a:hover .grid-item .overlay {
