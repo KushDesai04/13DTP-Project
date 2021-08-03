@@ -1,13 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
-
+<div class="home">
 <h2>Home Information</h2>
-
-<table class = "universities">
+<table class = "table">
     {% for university in universities %}
         <tr>
-            <td><a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a></td>
+            <td>
+                <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+            </td>
         </tr>
     {% endfor %}
 </table>
+</div>
 {% endblock %}
