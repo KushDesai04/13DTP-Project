@@ -8,7 +8,10 @@
 
 
 :root{
-  --clr_primary: #ff4040;
+  --clr_primary:#2d539e;
+  --clr_secondary: #3a68b3;
+  --clr_tertiary: #262a3f;
+  --clr_bg: #e8e9ec;
 }
 /* applies to everything in the website */
 * {
@@ -19,12 +22,12 @@
 }
 
 body{
-  background: rgba(0,0,0,0.3);
+  background: var(--clr_bg);
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--clr_primary);
 }
 
 .top {
@@ -67,7 +70,7 @@ nav ul{
 
 nav ul li {
   display: inline-block;
-  margin: auto 50px auto 50px;
+  margin: auto 50px;
 }
 
 nav ul li a {
@@ -112,7 +115,6 @@ nav ul li a:hover:after {
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  padding: 1vh 5px;
   display: inline-block;
   position: relative;
 }
@@ -156,8 +158,9 @@ nav ul li a:hover:after {
   height: 100vh;
 }
 
-.home h2{
+h2 {
   text-align: center;
+  margin: 40px;
 }
 
 .degree {
@@ -178,7 +181,7 @@ nav ul li a:hover:after {
 }
 
 .table tr:nth-child(even){
-  background-color: rgba(0,0,0,0.3);
+  background-color: #262a3f10;
 }
 
 .table tr:nth-child(even) a{
@@ -187,12 +190,12 @@ nav ul li a:hover:after {
 
 
 .table tr:nth-child(odd){
-  background-color: rgba(0,0,0,0.2);
+  background-color:#262a3f20;
 }
 
 
 .table tr td a {
-  color: #fff;
+  color: #262a3f;
   display: inline-block;
   padding: 10px 25px;
   position: relative;
@@ -221,15 +224,27 @@ nav ul li a:hover:after {
   display: flex;
   flex-direction: column; /* Make the divs go coloumn wise not row wise*/
   border: 2px solid var(--clr_primary);
-  margin: 15px;
   padding: 15px;
   background-color:rgb(0,0,0,0.1);
-  float: left;
+  position: fixed;
+  top: calc(20% + 10px);
+  left: 2.5%;
 }
 
 .filter .filter_item ul li{
   list-style-type: none;
   font-size: 0.7vw;
+}
+
+.filter input[type=submit]{
+  border: 1px solid var(--clr_primary);
+  background: var(--clr_bg);
+  transition: 0.2s all ease-in-out;
+}
+
+.filter input[type=submit]:hover{
+  background-color: var(--clr_secondary);
+  color: #fff;
 }
 /* Grid for all games */
 .grid-container {
@@ -315,6 +330,10 @@ footer p {
 
   header {
     background-size: contain;
+  }
+
+  header h1{
+    padding: 10px;
   }
 
   nav li {
