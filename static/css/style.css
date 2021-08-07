@@ -32,7 +32,7 @@ a {
 
 .top {
   background: var(--clr_primary);
-  min-height: 8vh;
+  min-height: 80px
 }
 /**
  * Header block
@@ -58,6 +58,7 @@ nav{
   justify-content: space-around;
   align-items: center;
   width: 70%;
+  min-height: 3vh;
   
 }
 
@@ -70,7 +71,7 @@ nav ul{
 
 nav ul li {
   display: inline-block;
-  margin: auto 50px;
+  margin: 1.5vh 50px;
 }
 
 nav ul li a {
@@ -271,7 +272,7 @@ h2 {
   overflow: hidden;
   position: relative;
   text-align: center;
-  font-size: 1vw;
+  font-size: 0.9vw;
 }
 
 .grid-container a .grid-item p{
@@ -279,19 +280,17 @@ h2 {
   transition: all 0.3s ease-in-out;
   opacity: 1;
   padding: 5px;
-  height: 10px;
 }
 
 .grid-container a:hover .grid-item p {
   color: var(--clr_primary);
-  opacity: 0;
+  opacity: 1
 }
 
 .grid-container a .grid-item .overlay {
   opacity: 0;
   transition: all 0.4s ease-in-out 0s;
-  position: relative;
-  top: 0;
+  height: 0.1vh;
 }
 
 .grid-container a:hover .grid-item .overlay {
@@ -321,7 +320,7 @@ footer p {
 @media (max-width: 900px) {
 
   h1 {
-    font-size: 40px;
+    font-size: 20px;
   }
 
   p {
