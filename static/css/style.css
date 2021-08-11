@@ -30,6 +30,10 @@ a {
   color: var(--clr_primary);
 }
 
+img{
+  height: 500px;
+}
+
 .top {
   background: var(--clr_primary);
   min-height: 80px
@@ -44,6 +48,13 @@ header {
   height: auto;
 }
 
+header h1{
+  padding: 10px;
+}
+
+header h1 a {
+  color: white;
+}
 
 /**
  * Navigation block
@@ -152,6 +163,13 @@ nav ul li a:hover:after {
 /**
  * MAIN Content block
  **/
+
+ .content{
+   width: 95%;
+   margin: 0 auto;
+   margin-bottom: 50px;
+ }
+
 .home{
   background-size: cover;
   background-repeat: no-repeat;
@@ -166,7 +184,6 @@ h2 {
 
 .degree {
   margin: 0 auto;
-  border: 1px solid black;
   width: 50%;
   padding: 5px;
 }
@@ -273,6 +290,7 @@ h2 {
   position: relative;
   text-align: center;
   font-size: 0.9vw;
+  margin-bottom: 25px;
 }
 
 .grid-container a .grid-item p{
@@ -300,11 +318,11 @@ h2 {
  * Footer block
  **/
 footer {
-  text-align: center;
-  min-height: 5vh;
-  line-height: 20px;
-  background-color: #2d3032;
+  position: fixed;
+  bottom: 0;
   width: 100%;
+  height: 20px;
+  background: var(--clr_secondary);
 }
 
 footer h2 {
@@ -329,10 +347,6 @@ footer p {
 
   header {
     background-size: contain;
-  }
-
-  header h1{
-    padding: 10px;
   }
 
   nav li {

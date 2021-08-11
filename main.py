@@ -57,7 +57,6 @@ def degree(id):
   degree = models.Degree.query.filter_by(id=id).first_or_404()
   universities = degree.universities
   subjects = degree.subjects
-  print(subjects)
   return render_template('degree.html', degree = degree, universities = universities)
 
 # All degrees page

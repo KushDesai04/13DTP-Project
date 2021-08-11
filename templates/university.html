@@ -2,7 +2,10 @@
 {% block content %}
 
 <h2>University Information</h2>
+<div class="text">
 {{university.name}}
 {{university.details}}
-{{university.location}}
+</div>
+<img src = '/static/images/Auckland.jpg'>
+<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 {% endblock %}
