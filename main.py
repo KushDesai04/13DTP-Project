@@ -35,6 +35,16 @@ def home():
   universities = models.University.query.all()
   return render_template('home.html', universities = universities)
 
+@app.route('/like', methods = ['POST'])
+def like():
+  degree = request.get_data().decode()
+  print(degree)
+  print(type(degree))
+  deg = models.Degree.query.filter_by(name=degree).first()
+  deg.likes += 1
+  db.session.merge(deg)
+  db.session.commit()
+
 
 # Indiviudual uni page
 @app.route('/university/<int:id>')

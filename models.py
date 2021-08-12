@@ -26,6 +26,7 @@ class Degree(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     description = db.Column(db.String())
+    likes = db.Column(db.Integer)
 
     # Relations
     universities = db.relationship('University', secondary=UniversityDegree, back_populates='degrees')

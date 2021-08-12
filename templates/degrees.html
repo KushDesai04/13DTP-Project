@@ -17,8 +17,10 @@
 <input type = 'submit'>
 </form>
 
+
 <div class = 'grid-container'>
     {% for degree in degrees %}
+    <button id = "button" type="submit" value={{degree.name}} onclick="func('{{degree.name}}')"></button>
         <a href="{{ url_for('degree', id=degree.id )}}">
         <div class='grid-item'>
             <p>{{degree.name}}</p>
@@ -27,11 +29,20 @@
                     {{university.name}}<br>
                 {% endfor %}
             </span>
+            
         </div> <!-- closing grid-item-->
         </a>
 
     {% endfor %}
 </div> <!-- closing grid-container-->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+    function func(degree){
+        $.post("like", degree);
+        console.log("func");
+        }
+</script>
 
 {% endblock %}
