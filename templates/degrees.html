@@ -20,16 +20,23 @@
 
 <div class = 'grid-container'>
     {% for degree in degrees %}
-    <button id = "button" type="submit" value={{degree.name}} onclick="func('{{degree.name}}')"></button>
-        <a href="{{ url_for('degree', id=degree.id )}}">
+    
+        
         <div class='grid-item'>
-            <p>{{degree.name}}</p>
-            <span class="overlay">
-                {% for university in degree.universities %}
-                    {{university.name}}<br>
-                {% endfor %}
-            </span>
             
+            <div>
+                <a href="{{ url_for('degree', id=degree.id )}}">
+                    <p>{{degree.name}}</p>
+                    <span class="overlay">
+                        {% for university in degree.universities %}
+                            {{university.name}}<br>
+                        {% endfor %}
+                    </span>
+                </a>
+            </div>
+            <div>
+            <button id = "button" type="submit" onclick="func('{{degree.name}}')"><p>👍</p></button>
+            </div>
         </div> <!-- closing grid-item-->
         </a>
 

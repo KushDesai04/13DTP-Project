@@ -293,25 +293,48 @@ h2 {
   margin-bottom: 25px;
 }
 
-.grid-container a .grid-item p{
+.grid-container .grid-item a p{
   color: black;
   transition: all 0.3s ease-in-out;
   opacity: 1;
   padding: 5px;
 }
 
-.grid-container a:hover .grid-item p {
+.grid-container .grid-item a{
+  padding: 150px 250px;
+}
+
+.grid-container .grid-item button{
+  height: 2vh;
+  width: 2vw;
+  position: absolute;
+  top: 17vh;
+  right: 1vh;
+  background-color: rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 15px;
+}
+
+.grid-container .grid-item button:hover{
+  background-color: rgba(0,0,0,0.4);
+}
+
+.grid-container .grid-item button p{
+  font-size: 1vh;
+}
+
+.grid-container .grid-item a:hover p {
   color: var(--clr_primary);
   opacity: 1
 }
 
-.grid-container a .grid-item .overlay {
+.grid-container .grid-item a .overlay {
   opacity: 0;
   transition: all 0.4s ease-in-out 0s;
   height: 0.1vh;
 }
 
-.grid-container a:hover .grid-item .overlay {
+.grid-container .grid-item a:hover .overlay {
   opacity: 1;
 }
 /**
