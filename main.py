@@ -115,8 +115,12 @@ def degrees():
   else:
     print(form.errors)
   
+  sort_by = "alphabet"
   # Sort degrees by name
-  degrees = sorted(degrees, key=lambda degree: degree.name)
+  if sort_by == "alphabet":
+    degrees = sorted(degrees, key=lambda degree: degree.name)
+  elif sort_by == "likes":
+    degrees = sorted(degrees, key=lambda degree: degree.likes)
 
   return render_template('degrees.html', degrees = degrees, forms=form)
 
