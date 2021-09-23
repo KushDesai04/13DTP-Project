@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class = "title"><h2>Bachelor of {{degree.name}} - </h2></div>
+
+<div class = "degree">
+<h3>Avaiable at:</h3>
+{% for university in universities %}
+<p>{{ university.name }}</p>
+{% endfor %}
+
+<br>
+
+<h3>Description</h3>
+<p>{{ degree.description }}</p>
+</div>
+{% endblock %}
