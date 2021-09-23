@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import widgets, SelectMultipleField, SubmitField, TextField
+from wtforms import widgets, SelectMultipleField, RadioField
 
 class MultiCheckboxField(SelectMultipleField):
   widget = widgets.ListWidget(prefix_label=False)
@@ -12,6 +12,8 @@ class SimpleForm(FlaskForm):
   # create a list of value/description tuples
   uni = [(x['id'], x['name']) for x in universities]
   subject = [(x['id'], x['name']) for x in subjects]
-#   print(uni)
+
   uni_data = MultiCheckboxField('Label', choices=uni)
   subject_data = MultiCheckboxField('Label', choices=subject)
+
+  radio = RadioField('Label', choices=[('alphabet','Alphabet'),('likes','Likes')], default='alphabet')

@@ -75,6 +75,7 @@ def degrees():
   form = SimpleForm()
   degrees = models.Degree.query.all()
   subjects = models.Subject.query.all()
+  sort_by = "alphabet"
 
   if form.validate_on_submit():
     # Empty list to store degrees filtered by university
@@ -107,15 +108,18 @@ def degrees():
       # Get degrees that are in both sets
       degrees = list(set(uni_degrees) & set(sub_degrees))
       print(degrees)
+
+      
     
     # If no subject filters:
     else:
       degrees = uni_degrees
 
+    sort_by = form.radio.data
+
   else:
     print(form.errors)
   
-  sort_by = "alphabet"
   # Sort degrees by name
   if sort_by == "alphabet":
     degrees = sorted(degrees, key=lambda degree: degree.name)
