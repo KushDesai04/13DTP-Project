@@ -1,6 +1,6 @@
-/**
- * Global style
- **/
+/****************
+ * Global style *
+ ****************/
 
 /* Grab some nice Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
@@ -34,13 +34,21 @@ img{
   height: 500px;
 }
 
-.top {
+
+h2 {
+  text-align: center;
+  margin: 40px;
+}
+
+
+/****************
+ * Header block *
+ ****************/
+ .top {
   background: var(--clr_primary);
   min-height: 80px
 }
-/**
- * Header block
- **/
+
 header {
   float: left;
   width: 30%;
@@ -56,30 +64,10 @@ header h1 a {
   color: white;
 }
 
-.text{
-  width: 80%;
-  margin: 0 auto;
-}
 
-
-.subtext{
-  background: #262a3f10;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.subtext ul li{
-  margin: 20px;
-  list-style: none;
-}
-
-.subtext ul li p{
-  text-align: left;
-}
-
-/**
- * Navigation block
- **/
+/********************
+ * Navigation block *
+ ********************/
 
 
 /* by using "nav ul" instead of just "ul", only an unordered list in the nav bar will take on this styling, meaning it doesn't mess up unordered lists in the main content */
@@ -181,10 +169,10 @@ nav ul li a:hover:after {
 .dropdown:hover .dropbtn {background-color: rgba(0,0,0,0.2);}
 
 
-/**
- * MAIN Content block
- **/
 
+/***************************************
+ * Content block applies to every page *
+ ***************************************/
  .content{
    width: 95%;
    margin: 0 auto;
@@ -192,17 +180,39 @@ nav ul li a:hover:after {
    min-height: 90vh;
  }
 
-.home{
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100vh;
+ /************
+ * Home Page *
+ *************/
+
+ /* Grid for degree tips */
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
+  position: relative;
 }
 
-h2 {
+
+/* Every individual item in the grid */
+.home-container .grid-item {
+  border-radius: 10px;
   text-align: center;
-  margin: 40px;
+  height: 40vh;
+
 }
+
+.home-container .grid-item p{
+  color: black;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  padding: 5px;
+}
+
+
+
+
+ /**********************
+ * Individual Degree Page *
+ **********************/
 
 .degree {
   margin: 0 auto;
@@ -214,6 +224,10 @@ h2 {
   text-align: center;
 }
 
+
+ /**********************
+ * All Degrees Page *
+ **********************/
 .table {
   width: 0%;
   height: 25vh;
@@ -231,6 +245,20 @@ h2 {
   border: 1px solid var(--clr_tertiary);
 }
 
+
+.table td{
+  width: calc(100%/8);
+}
+
+.table td a {
+  color: #262a3f;
+  display: inline-block;
+  padding: 10px 25px;
+  position: relative;
+  width: 25%;
+}
+
+
 .table:nth-child(even) a{
   float: right;
   width: 100%;
@@ -243,15 +271,6 @@ h2 {
   
 }
 
-
-
-.table td a {
-  color: #262a3f;
-  display: inline-block;
-  padding: 10px 25px;
-  position: relative;
-  width: 25%;
-}
 .table td a:after {    
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
@@ -264,6 +283,8 @@ h2 {
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
+
+
 .table td a:hover:after { 
   width: 100%; 
   left: 0; 
@@ -297,8 +318,10 @@ h2 {
   background-color: var(--clr_secondary);
   color: #fff;
 }
-/* Grid for all games */
-.grid-container {
+
+
+/* Grid for all degrees */
+.degrees-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
   width: 80%;
@@ -306,10 +329,6 @@ h2 {
   position: relative;
 }
 
-.uni_name{
-  grid-column-start: 1;
-  grid-column-end: 5;
-}
 
 /* Every individual item in the grid */
 .grid-item {
@@ -326,18 +345,18 @@ h2 {
   margin-bottom: 25px;
 }
 
-.grid-container .grid-item a p{
+.degrees-container .grid-item a p{
   color: black;
   transition: all 0.3s ease-in-out;
   opacity: 1;
   padding: 5px;
 }
 
-.grid-container .grid-item a{
+.degrees-container .grid-item a{
   padding: 150px 250px;
 }
 
-.grid-container .grid-item button{
+.degrees-container .grid-item button{
   height: 2vh;
   width: 2vw;
   position: absolute;
@@ -348,21 +367,21 @@ h2 {
   border-radius: 15px;
 }
 
-.grid-container .grid-item button:hover{
+.degrees-container .grid-item button:hover{
   background-color: rgba(0,0,0,0.1);
 }
 
-.grid-container .grid-item button p{
+.degrees-container .grid-item button p{
   font-size: 1vh;
   color: var(--clr_primary);
 }
 
-.grid-container .grid-item a:hover p {
+.degrees-container .grid-item a:hover p {
   color: var(--clr_primary);
   opacity: 1
 }
 
-.grid-container .grid-item a .overlay {
+.degrees-container .grid-item a .overlay {
   opacity: 0;
   transition: all 0.4s ease-in-out 0s;
   height: 0.1vh;
@@ -370,12 +389,14 @@ h2 {
   justify-content: center;
 }
 
-.grid-container .grid-item a:hover .overlay {
+.degrees-container .grid-item a:hover .overlay {
   opacity: 1;
 }
-/**
- * Footer block
- **/
+
+
+/****************
+ * Footer block *
+ ****************/
 footer {
   width: 100%;
   height: 20px;
