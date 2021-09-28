@@ -1,68 +1,68 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="home">
-<h2>Universities</h2>
-<table class = "table">
-    <tr>
-        {% for university in universities %}
-            <td>
-                <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
-            </td>
-        {% endfor %}
-    </tr>
-</table>
+    <h2>Universities</h2>
+    <table class = "table">
+        <tr>
+            {% for university in universities %}
+                <td>
+                    <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
 
-<div class = "text">
-    <h2>Choosing a Degree</h2>
-    <div class="subtext">
-        <h3>How to choose a good degree for you</h3>
-        <ul>
-            <li>
-                <h3>What Are Your Biggest Priorities?</h3>
-                <p>Some students pursue certain majors primarily based upon salary potential and job demand. Alternatively, other students choose majors they're passionate about and/or highly skilled in. Before you choose a major, think about which of these three factors — economic advantage, interest level, and ability — are most important and relevant to you and your future goals.
-            </p></li>
-            <li>
-                <h3>What Are You Interested In?</h3>
-                <p>Studies have found that students tend to perform better in school when they can focus on their interests. Unfortunately, it's not always easy for a student to identify their interests.
-                
-                To get help with this, consider taking a personality quiz. For example, the Myers-Briggs Type Indicator questionnaire can help you determine subjects that closely align with your personality and interests.
-                
-                This popular assessment uses your habits and attitudes to generate one of 16 personality types, written as a combination of four letters. Examples include ISFJ (introverted, sensing, feeling, and judging) and ENTP (extroverted, intuitive, thinking, and perceiving).
-                
-                You can also explore potential areas of study and career paths by joining student clubs, volunteering, working a part-time job on campus, managing a side hustle, or completing internships.
-            </p></li>
-            <li>    
-                <h3>What Are You Good At?</h3>
-                <p>Understanding your natural skills and talents can go a long way in helping you make an informed and confident decision when choosing a major. It may be your parents' dream for you to be an artist, but what if you skew more toward business or the sciences? Just because someone else has a degree path in mind doesn't mean it's right for you.
-                
-                One way of determining which academic fields best suit you is to take a close look at your class grades in high school, as well as your ACT or SAT scores. Doing this can highlight your strengths in specific academic areas.
-            </p></li>
-            <li>    
-                <h3>What Are the Highest-Paying Fields?</h3>
-                <p>When considering which major to pursue, determine how important salary and salary potential weigh into your decision-making process. If you're motivated by high earnings, pursuing a degree in a STEM-related field may appeal to you.
-                
-                That said, some students care more about the importance of their work than the salary offered; they don't want a job just for the money. Non-STEM degrees that students are often passionate about relate to human services, education, and visual/performing arts.
-                
-                The Bureau of Labor Statistics provides a regularly updated list of positions offering the highest wages. Psychiatrists rank high on this list, as do oral and maxillofacial surgeons, obstetricians and gynecologists, and general internal medicine physicians.
-                
-                If you want a job outside of medicine and healthcare, other positions with high salaries include chief executive, airline pilot, computer and information systems manager, architectural and engineering manager, and marketing manager.
-            </p></li>
-            <li>    
-                <h3>How Rigorous Will the Coursework Be?</h3>
-                <p>Some majors may feel harder than others based on factors like typical homework load, course expectations, and frequency of exams. Your core classes (i.e., classes specifically related to your major) will make up a significant portion of your college course load. So, before you declare a major, make sure you understand how rigorous your weekly workload will be.
-                
-                Indiana University Bloomington's National Survey of Student Engagement, carried out in 2016, determined the most difficult majors based on the average time students spent per week preparing for classes. The hardest majors included architecture, chemical engineering, and aeronautical engineering.
-                
-                Easier majors, which typically required less prep time, included fields like criminal justice, communication, and public relations.
-            </p></li>
-            <li>    
-                <h3>What Does Your Academic Advisor Say?</h3>
-                <p>Checking in with your academic advisor is one of the most important steps you can take when deciding on a major. They've had similar conversations with hundreds of students and can provide insightful wisdom into picking a major. Your advisor may even propose a major you hadn't previously considered that meets your academic and career goals.
-                
-                When speaking with an academic advisor, remember that their time is valuable and limited. Come to the meeting with a list of thoughtful questions to ask.
-            </p></li>
-        </ul>
-    </div>
-</div>
-</div>
+    <div class = "text">
+        <h2>Choosing a Degree</h2>
+        <div class="subtext">
+            <h3>How to choose a good degree for you</h3>
+            <ul>
+                <li>
+                    <h3>What Are Your Biggest Priorities?</h3>
+                    <p>Some students pursue certain majors primarily based upon salary potential and job demand. Alternatively, other students choose majors they're passionate about and/or highly skilled in. Before you choose a major, think about which of these three factors — economic advantage, interest level, and ability — are most important and relevant to you and your future goals.
+                </p></li>
+                <li>
+                    <h3>What Are You Interested In?</h3>
+                    <p>Studies have found that students tend to perform better in school when they can focus on their interests. Unfortunately, it's not always easy for a student to identify their interests.
+                    
+                    To get help with this, consider taking a personality quiz. For example, the Myers-Briggs Type Indicator questionnaire can help you determine subjects that closely align with your personality and interests.
+                    
+                    This popular assessment uses your habits and attitudes to generate one of 16 personality types, written as a combination of four letters. Examples include ISFJ (introverted, sensing, feeling, and judging) and ENTP (extroverted, intuitive, thinking, and perceiving).
+                    
+                    You can also explore potential areas of study and career paths by joining student clubs, volunteering, working a part-time job on campus, managing a side hustle, or completing internships.
+                </p></li>
+                <li>    
+                    <h3>What Are You Good At?</h3>
+                    <p>Understanding your natural skills and talents can go a long way in helping you make an informed and confident decision when choosing a major. It may be your parents' dream for you to be an artist, but what if you skew more toward business or the sciences? Just because someone else has a degree path in mind doesn't mean it's right for you.
+                    
+                    One way of determining which academic fields best suit you is to take a close look at your class grades in high school, as well as your ACT or SAT scores. Doing this can highlight your strengths in specific academic areas.
+                </p></li>
+                <li>    
+                    <h3>What Are the Highest-Paying Fields?</h3>
+                    <p>When considering which major to pursue, determine how important salary and salary potential weigh into your decision-making process. If you're motivated by high earnings, pursuing a degree in a STEM-related field may appeal to you.
+                    
+                    That said, some students care more about the importance of their work than the salary offered; they don't want a job just for the money. Non-STEM degrees that students are often passionate about relate to human services, education, and visual/performing arts.
+                    
+                    The Bureau of Labor Statistics provides a regularly updated list of positions offering the highest wages. Psychiatrists rank high on this list, as do oral and maxillofacial surgeons, obstetricians and gynecologists, and general internal medicine physicians.
+                    
+                    If you want a job outside of medicine and healthcare, other positions with high salaries include chief executive, airline pilot, computer and information systems manager, architectural and engineering manager, and marketing manager.
+                </p></li>
+                <li>    
+                    <h3>How Rigorous Will the Coursework Be?</h3>
+                    <p>Some majors may feel harder than others based on factors like typical homework load, course expectations, and frequency of exams. Your core classes (i.e., classes specifically related to your major) will make up a significant portion of your college course load. So, before you declare a major, make sure you understand how rigorous your weekly workload will be.
+                    
+                    Indiana University Bloomington's National Survey of Student Engagement, carried out in 2016, determined the most difficult majors based on the average time students spent per week preparing for classes. The hardest majors included architecture, chemical engineering, and aeronautical engineering.
+                    
+                    Easier majors, which typically required less prep time, included fields like criminal justice, communication, and public relations.
+                </p></li>
+                <li>    
+                    <h3>What Does Your Academic Advisor Say?</h3>
+                    <p>Checking in with your academic advisor is one of the most important steps you can take when deciding on a major. They've had similar conversations with hundreds of students and can provide insightful wisdom into picking a major. Your advisor may even propose a major you hadn't previously considered that meets your academic and career goals.
+                    
+                    When speaking with an academic advisor, remember that their time is valuable and limited. Come to the meeting with a list of thoughtful questions to ask.
+                </p></li>
+            </ul>
+        </div> <!-- Closing Subtext -->
+    </div> <!-- Closing Text -->
+</div> <!-- Closing Home -->
 {% endblock %}
