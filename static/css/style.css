@@ -196,16 +196,29 @@ nav ul li a:hover:after {
 .home-container .grid-item {
   border-radius: 10px;
   text-align: center;
-  height: 40vh;
+  height: 5vh;
+  overflow: hidden;
+  transition: 0.5s ease all;
 
 }
 
 .home-container .grid-item p{
   color: black;
   transition: all 0.3s ease-in-out;
-  opacity: 1;
   padding: 5px;
 }
+
+.home-container .grid-item:hover{
+  height: 20vh;
+}
+
+
+
+.home-container .grid-item h3{
+  margin-top: 2vh;
+}
+
+
 
 
 
