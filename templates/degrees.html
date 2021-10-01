@@ -3,53 +3,63 @@
 
 <h2>All Degrees</h2>
 <!-- Filtering system -->
-<form class = 'filter' method = 'POST' action = '/degrees'>
-<div>
-    <h3>Filter by</h3>
-    <!-- FILTER BY UNIVERSITY -->
-    {% for form in forms %}
-        <div class = "filter_item">{{ form }}</div>
-    {% endfor %}
-</div>
-<br>
+<form class='filter' method='POST' action='/degrees'>
+    <div>
+        <h3>Filter by</h3>
+        <!-- FILTER BY UNIVERSITY -->
+        {% for form in forms %}
+        <div class="filter_item">{{ form }}</div>
+        {% endfor %}
+    </div>
+    <br>
 
-<!-- Buttons -->
-<input type = 'submit'>
+    <!-- Buttons -->
+    <input type='submit'>
 </form>
 
 
-<div class = 'degrees-container'>
+<div class='degrees-container'>
     {% for degree in degrees %}
-    
-        
-        <div class='grid-item'>
-            
-            <div>
-                <a href="{{ url_for('degree', id=degree.id )}}">
-                    <p>{{degree.name}}</p>
-                    <span class="overlay">
-                        {% for university in degree.universities %}
-                            {{university.name}}<br>
-                        {% endfor %}
-                    </span>
-                </a>
-            </div>
-            <div>
-            <button id = "button" type="submit" onclick="func('{{degree.name}}')"><p>{{degree.likes}} &#10084;</p></button>
-            </div>
-        </div> <!-- closing grid-item-->
-        </a>
+
+
+    <div class='grid-item'>
+
+        <div>
+            <a href="{{ url_for('degree', id=degree.id )}}">
+                <p>{{degree.name}}</p>
+                <span class="overlay">
+                    {% for university in degree.universities %}
+                    {{university.name}}<br>
+                    {% endfor %}
+                </span>
+            </a>
+        </div>
+        <div>
+            <button id="button" class="like_degree" type="submit" data-degree="{{ degree.name }}">
+                <p>{{degree.likes}} &#10084;</p>
+            </button>
+        </div>
+    </div> <!-- closing grid-item-->
+    </a>
 
     {% endfor %}
 </div> <!-- closing grid-container-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-
-    function func(degree){
+    document.querySelectorAll('button.like_degree')
+        .forEach(element => element.addEventListener(
+            'click', 
+            event => {
+                // $.post("like", event.target.dataset.degree).then(response => {
+                //     response.
+                console.log("liked")
+                })
+        )
+    function func(degree) {
         $.post("like", degree);
         console.log("func");
-        }
+    }
 </script>
 
 {% endblock %}

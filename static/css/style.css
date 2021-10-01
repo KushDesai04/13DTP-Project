@@ -46,14 +46,16 @@ h2 {
  ****************/
  .top {
   background: var(--clr_primary);
-  min-height: 80px
+  min-height: 150px
 }
 
 header {
   float: left;
-  width: 30%;
+  width: 100%;
   color: white;
   height: auto;
+  display: flex;
+  justify-content: space-around;
 }
 
 header h1{
@@ -73,12 +75,8 @@ header h1 a {
 /* by using "nav ul" instead of just "ul", only an unordered list in the nav bar will take on this styling, meaning it doesn't mess up unordered lists in the main content */
 
 nav{
-  float: right;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  width: 70%;
-  min-height: 3vh;
   
 }
 
@@ -184,44 +182,27 @@ nav ul li a:hover:after {
  * Home Page *
  *************/
 
- /* Grid for degree tips */
+ /* Box for degree tips */
 .home-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* makes the grid take up as much space as possible and sets the min-width of each section to 400px*/
-  position: relative;
+  width: 100%;
+  display: flex;
+  background: #262a3f10;
 }
 
-
-/* Every individual item in the grid */
-.home-container .grid-item {
-  border-radius: 10px;
-  text-align: center;
-  height: 5vh;
-  overflow: hidden;
-  transition: 0.5s ease all;
+.home-container .buttons {
+  width: 30%;
 
 }
 
-.home-container .grid-item p{
+.home-container .text {
+  opacity: 1;
   color: black;
-  transition: all 0.3s ease-in-out;
-  padding: 5px;
+
 }
 
-.home-container .grid-item:hover{
-  height: 20vh;
+.home-container button:hover, .text{
+  opacity: 1;
 }
-
-
-
-.home-container .grid-item h3{
-  margin-top: 2vh;
-}
-
-
-
-
-
 
  /**********************
  * Individual Degree Page *

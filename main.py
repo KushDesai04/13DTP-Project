@@ -44,6 +44,7 @@ def like():
   deg.likes += 1
   db.session.merge(deg)
   db.session.commit()
+  return deg.likes
 
 
 # Indiviudual uni page

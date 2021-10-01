@@ -2,60 +2,55 @@
 {% block content %}
 <div class="home">
     <h2>Universities</h2>
-    <table class = "table">
+    <table class="table">
         <tr>
             {% for university in universities %}
-                <td>
-                    <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
-                </td>
+            <td>
+                <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+            </td>
             {% endfor %}
         </tr>
     </table>
-    
+
     <div class="degree-tips">
-    <h2>Choosing a Degree</h2>
-        
-    <div class = 'home-container'>
-        
+        <h2>Choosing a Degree</h2>
 
-        <div class='grid-item'>
-            <h3>What Are Your Biggest Priorities?</h3>
-            <p> - Salary potential and job demand </p>
-            <p> - Majors you're passionate about and/or highly skilled in </p>
-            <p> - Economic advantage, interest level, and ability — are most important and relevant to you and your future goals. </p>
-        </div>
+        <div class='home-container'>
+            <div class="buttons">
+                <div id="tip" data-tip="t1">Tip 1</button>
+                </div>
 
-        <div class='grid-item'>
-            <h3>What Are You Interested In?</h3>
-            <p>Students tend to perform better in school when they can focus on their interests
-             You can also explore potential areas of study and career paths by joining student clubs, volunteering, working a part-time job on campus, managing a side hustle, or completing internships.
-            </p>
-        </div>
+                <div class="text">
+                    <div id="t1">Tip1</div>
+opacity -->
 
-        <div class='grid-item'>
-            <h3>What Are You Good At?</h3>
-            <p>Understanding your natural skills and talents can go a long way in helping you make an informed and confident decision when choosing a major. 
-            One way of determining which academic fields best suit you is to take a close look at your class grades in high school. Doing this can highlight your strengths in specific academic areas.
-            </p>
-        </div>
+                </div>
+            </div> <!-- Closing degree-tips -->
 
-        <div class='grid-item'>
-            <h3>How Rigorous Will the Coursework Be?</h3>
-            <div class = "hide">
-            <p>Some majors may feel harder than others based on factors like typical homework load, course expectations, and frequency of exams. Your core classes (i.e., classes specifically related to your major) will make up a significant portion of your college course load. So, before you declare a major, make sure you understand how rigorous your weekly workload will be.
-            </p>
-            </div>
-        </div>
+        </div> <!-- Closing Home -->
 
-        <div class='grid-item'>
-            <h3>What Does Your Academic Advisor Say?</h3>
-            <p>Checking in with your academic advisor is one of the most important steps you can take when deciding on a major. They've had similar conversations with hundreds of students and can provide insightful wisdom into picking a major. Your advisor may even propose a major you hadn't previously considered that meets your academic and career goals.
-            </p>
-        </div>
+        <script>
+            console.log("java")
 
-    </div> <!-- closing grid-container-->
-    </div> <!-- Closing degree-tips -->
 
-</div> <!-- Closing Home -->
-{% endblock %}
-
+            document.querySelectorAll('#tip')
+                .forEach(element => element.addEventListener(
+                    'click',
+                    event => {
+                        console.log(event.target.dataset.tip)
+                        var text = document.getElementsByClassName("t1")
+                        t1 = document.getElementById('t1')
+                        switch (t1.style.opacity) {
+                            case (0):
+                                opacity = 1;
+                                break;
+                            case (1):
+                            default:
+                                opacity = 0;
+                        }
+                        t1.style.opacity = opacity;
+                        console.log("t1")
+                    })
+                )
+        </script>
+        {% endblock %}
