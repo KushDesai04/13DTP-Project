@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="home">
+    <h2>Universities</h2>
+    <table class="table">
+        <tr>
+            {% for university in universities %}
+            <td>
+                <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div class="degree-tips">
+        <h2>Choosing a Degree</h2>
+
+        <div class='home-container'>
+            <div class="buttons">
+                <div id="tip" data-tip="t1">Tip 1</button></div>
+                <div id="tip" data-tip="t2">Tip 2</button></div>
+                <div id="tip" data-tip="t3">Tip 3</button></div>
+                <div id="tip" data-tip="t4">Tip 4</button></div>
+                <div id="tip" data-tip="t5">Tip 5</button></div>
+                <div id="tip" data-tip="t6">Tip 6</button></div>
+            </div> <!-- Closing buttons -->
+
+            <div class="text">
+                <div id="t1">Tip1</div>
+                <div id="t2">Tip2</div>
+                <div id="t3">Tip3</div>
+                <div id="t4">Tip4</div>
+                <div id="t5">Tip5</div>
+                <div id="t6">Tip6</div>
+            </div> <!-- Closing text -->
+        </div> <!-- Closing home-container -->
+    </div> <!-- Closing degree-tips -->
+
+        </div> <!-- Closing Home -->
+
+        <script>
+            console.log("java")
+
+
+            document.querySelectorAll('#tip')
+                .forEach(element => element.addEventListener(
+                    'click',
+                    event => {
+                        console.log(event.target.dataset.tip)
+                        t1 = document.getElementById(event.target.dataset.tip)
+                        console.log(t1.style.opacity)
+                        switch (t1.style.opacity) {
+                            case ("0"):
+                                opacity = "1";
+                                break;
+                            case ("1"):
+                            default:
+                                opacity = "0";
+                        }
+                        t1.style.opacity = opacity;
+                        console.log("t1")
+                    })
+                )
+        </script>
+        {% endblock %}
