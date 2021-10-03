@@ -186,10 +186,7 @@ nav ul li a:hover:after {
 .home-container {
   width: 100%;
   display: flex;
-<<<<<<< HEAD
   justify-content: space-around;
-=======
->>>>>>> e348695b14ed8e11a78c654fd157a32156a54054
   background: #262a3f10;
 }
 
@@ -198,7 +195,6 @@ nav ul li a:hover:after {
 
 }
 
-<<<<<<< HEAD
 .home-container .buttons #tip {
   cursor: pointer;
   margin: 5px;
@@ -222,8 +218,6 @@ nav ul li a:hover:after {
   left: 0; 
 }
 
-=======
->>>>>>> e348695b14ed8e11a78c654fd157a32156a54054
 .home-container .text {
   opacity: 1;
   color: black;
