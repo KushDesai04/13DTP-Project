@@ -5,7 +5,12 @@
 <div class="text">
 {{university.name}}
 {{university.details}}
+{% for degree in university.degrees %}
+<p>{{degree.name}}</p>
+{% endfor %}
 </div>
 <img src = '/static/images/Auckland.jpg'>
 <iframe src="https://www.google.com/maps/embed?pb={{university.location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
 {% endblock %}
