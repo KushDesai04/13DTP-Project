@@ -1,12 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h2>University Information</h2>
+<h2>{{ university.name }}</h2>
 <div class="text">
-{{university.name}}
 {{university.details}}
 {% for degree in university.degrees %}
-<p>{{degree.name}}</p>
+<a href="{{ url_for('degree', id=degree.id )}}")>{{degree.name}}</a>
 {% endfor %}
 </div>
 <img src = '/static/images/Auckland.jpg'>

@@ -1,17 +1,32 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<div class = "title"><h2>Bachelor of {{degree.name}} - </h2></div>
+<div class="title">
+    <h2>Bachelor of {{degree.name}} </h2>
+</div>
 
-<div class = "degree">
-<h3>Avaiable at:</h3>
-{% for university in universities %}
-<p>{{ university.name }}</p>
-{% endfor %}
+<div class="degree">
+    <h3>Avaiable at:</h3>
+    {% for university in universities %}
+    <p>{{ university.name }}</p>
+    {% endfor %}
 
-<br>
+    <br>
 
-<h3>Description</h3>
-<p>{{ degree.description }}</p>
+    <p>{{ degree.description }}</p>
+    <h3>Prerequisites</h3>
+
+    {% for uni in universities %}
+        <br>
+        {% if uni.id in prereq_uni %} <!-- Check if the uni has prerequisites -->
+            <h4>{{uni.name}}:</h4>
+            {% for req in prereq %}
+                {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
+                    <p>{{req.subjects.name}}</p>
+                {% endif %}
+    
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}

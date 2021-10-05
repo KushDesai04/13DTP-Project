@@ -30,7 +30,7 @@ class Degree(db.Model):
 
     # Relations
     universities = db.relationship('University', secondary=UniversityDegree, back_populates='degrees')
-    subjects = db.relationship('Prerequisites', back_populates='degrees')
+    prerequisites = db.relationship('Prerequisites', back_populates='degrees')
 
 
 class Subject(db.Model):
@@ -56,5 +56,5 @@ class Prerequisites(db.Model):
     credits = db.Column(db.Integer)
 
     subjects = db.relationship('Subject', back_populates='degrees')
-    degrees = db.relationship('Degree', back_populates='subjects')
+    degrees = db.relationship('Degree', back_populates='prerequisites')
 
