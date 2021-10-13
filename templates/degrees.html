@@ -2,6 +2,8 @@
 {% block content %}
 
 <h2>All Degrees</h2>
+
+<div class="all-degrees">
 <!-- Filtering system -->
 <form class='filter' method='POST' action='/degrees'>
     <div>
@@ -44,6 +46,7 @@
 
     {% endfor %}
 </div> <!-- closing grid-container-->
+</div> <!-- Closing all-degrees -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>

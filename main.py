@@ -1,7 +1,15 @@
 # Degrees website
-# Maked by KDawg
-# Maken on term 1
-# Lisence: $5 yo
+# Made by Kush Desai
+# Term 1
+# License: 14 Excellence Credits
+
+'''
+Git Init
+Repo: https://github.com/KushDesai04/13DTP-Project
+user.name = 'Kush Desai'
+user.email = '17522@burnside.school.nz
+'''
+
 
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy

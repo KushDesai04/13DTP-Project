@@ -3,13 +3,25 @@
 
 <h2>{{ university.name }}</h2>
 <div class="text">
-{{university.details}}
-{% for degree in university.degrees %}
-<a href="{{ url_for('degree', id=degree.id )}}")>{{degree.name}}</a>
-{% endfor %}
+    {{university.details}}
 </div>
-<img src = '/static/images/Auckland.jpg'>
-<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<img src='/static/images/Auckland.jpg'>
+<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" width="600" height="450" style="border:0;"
+    allowfullscreen="" loading="lazy"></iframe>
 
+<div class='university-degrees-container'>
+    {% for degree in university.degrees %}
+    <div class='grid-item'>
+        <a href="{{ url_for('degree', id=degree.id )}}">
+            <p>{{degree.name}}</p>
+            <span class="overlay">
+                {% for university in degree.universities %}
+                {{university.name}}<br>
+                {% endfor %}
+            </span>
+        </a>
+    </div><!-- closing grid-item-->
+{% endfor %}
+</div> <!-- closing grid-container-->
 
 {% endblock %}

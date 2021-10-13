@@ -14,19 +14,26 @@
     <br>
 
     <p>{{ degree.description }}</p>
-    <h3>Prerequisites</h3>
 
-    {% for uni in universities %}
+    <div class ="prereq">
         <br>
-        {% if uni.id in prereq_uni %} <!-- Check if the uni has prerequisites -->
-            <h4>{{uni.name}}:</h4>
-            {% for req in prereq %}
-                {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
-                    <p>{{req.subjects.name}}</p>
-                {% endif %}
-    
-            {% endfor %}
-        {% endif %}
-    {% endfor %}
+        <h3>Prerequisites</h3>
+
+        {% for uni in universities %}
+            
+            {% if uni.id in prereq_uni %} <!-- Check if the uni has prerequisites -->
+                <br>
+                
+                <h4>{{uni.name}}:</h4>
+                
+                {% for req in prereq %}
+                    {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
+                        <p>{{req.subjects.name}}</p>
+                    {% endif %}
+                {% endfor %}
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
