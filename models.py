@@ -54,6 +54,7 @@ class Prerequisites(db.Model):
     sid= db.Column(db.Integer, db.ForeignKey('Subject.id'))
     rankscore= db.Column(db.Integer)
     credits = db.Column(db.Integer)
+    other = db.Column(db.String)
 
     subjects = db.relationship('Subject', back_populates='degrees')
     degrees = db.relationship('Degree', back_populates='prerequisites')

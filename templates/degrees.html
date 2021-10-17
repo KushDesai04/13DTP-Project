@@ -37,7 +37,7 @@
             </a>
         </div>
         <div>
-            <button id="button" class="like_degree" type="submit" data-degree="{{ degree.name }}">
+            <button id="button" class="like_degree" type="submit" data-degree="{{ degree.name }}" onclick="post('{{ degree.name }}')" >
                 <p>{{degree.likes}} &#10084;</p>
             </button>
         </div>
@@ -59,7 +59,7 @@
                 console.log("liked")
                 })
         )
-    function func(degree) {
+    function post(degree) {
         $.post("like", degree);
         console.log("func");
     }
