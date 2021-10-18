@@ -4,7 +4,7 @@
 # License: 14 Excellence Credits
 
 '''
-Git Init
+Git
 Repo: https://github.com/KushDesai04/13DTP-Project
 user.name = 'Kush Desai'
 user.email = '17522@burnside.school.nz

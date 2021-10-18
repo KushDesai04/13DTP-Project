@@ -224,6 +224,21 @@ nav ul li a:hover:after {
 
 /* Individual University Page*/
 
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex img{
+  width: 20vw;
+  height: auto;
+}
+
+.flex .text{
+  margin: 0 auto;
+  width: 40%;
+}
+
 /* Grid for degrees */
 .university-degrees-container {
   display: grid;

@@ -29,6 +29,9 @@
                 {% for req in prereq %}
                     {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
                         <p>{{req.subjects.name}}</p>
+                        {% if req.other %}
+                        {{req.other}}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
                 <br>
