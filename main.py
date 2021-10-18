@@ -46,7 +46,7 @@ def home():
 @app.route('/like', methods = ['POST'])
 def like():
   degree = request.get_data().decode()
-
+  print(degree, "LIKED")
   deg = models.Degree.query.filter_by(name=degree).first()
   deg.likes += 1
   db.session.merge(deg)
