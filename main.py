@@ -15,6 +15,7 @@ from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config                 
 from forms import SimpleForm
+import json
 
 
 app = Flask(__name__)
@@ -45,13 +46,14 @@ def home():
 
 @app.route('/like', methods = ['POST'])
 def like():
-  degree = request.get_data().decode()
-  print(degree, "LIKED")
-  deg = models.Degree.query.filter_by(name=degree).first()
-  deg.likes += 1
+  degree = json.loads(request.get_data())
+  print('='*20)
+  print(type(degree), "LIKED")
+  deg = models.Degree.query.filter_by(name=degree["degree"]).first()
+  deg.likes += 1 if degree["positive"] else - 1
   db.session.merge(deg)
   db.session.commit()
-  return deg.likes
+  return str(deg.likes)
 
 
 # Indiviudual uni page

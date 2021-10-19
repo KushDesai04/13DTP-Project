@@ -37,9 +37,10 @@
             </a>
         </div>
         <div>
-            <button id="like_button" class="like_degree" type="submit"  value="{{ degree.likes }}" >
+            <label>
+                <input type="checkbox" id="like_button" class="like_degree" type="submit"  value="{{ degree.name }}" >
                 <p>{{degree.likes}} &#10084;</p>
-            </button>
+            </label>
         </div>
     </div> <!-- closing grid-item-->
     </a>
@@ -52,15 +53,28 @@
 <script>
     document.querySelectorAll('#like_button')
         .forEach(element => element.addEventListener(
-            'click', 
+            'change', 
             event => {
-                console.log(element);
-
-                $(element).change(function() {
-                console.log("change")
+                console.log(event.target.checked);
+            
+                fetch('/like', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        degree: event.target.value,
+                        positive: event.target.checked
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    event.target.parentElement.querySelector("p").innerHTML = data + ' &#10084;';
                 });
 
-                })
+
+            })
         )
 
 
