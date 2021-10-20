@@ -6,10 +6,18 @@
 </div>
 
 <div class="degree">
-    <h3>Avaiable at:</h3>
-    {% for university in universities %}
-    <p>{{ university.name }}</p>
-    {% endfor %}
+    <div class="available">
+        <h3>Available at</h3>
+        <table class="table">
+            <tr>
+                {% for university in universities %}
+                <td>
+                    <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
 
     <br>
 
@@ -17,26 +25,38 @@
 
     <div class ="prereq">
         <br>
-        <h3>Prerequisites</h3>
+        <h3>Prerequisites-</h3>
 
+        {% if prereq %}
         {% for uni in universities %}
-            
             {% if uni.id in prereq_uni %} <!-- Check if the uni has prerequisites -->
-                <br>
-                
-                <h4>{{uni.name}}:</h4>
-                
-                {% for req in prereq %}
-                    {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
-                        <p>{{req.subjects.name}}</p>
-                        {% if req.other %}
-                        {{req.other}}
-                        {% endif %}
+                <h4>{{uni.name}}:</h4>            
+
+            {% for req in prereq %}
+                {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
+                    {% if req.rankscore %}
+                        Rankscore: {{req.rankscore}}
                     {% endif %}
-                {% endfor %}
-                <br>
+                    <div class="prereq_text">
+                    <p>
+                        {{req.subjects.name}}
+                        {% if req.other %}
+                            <sup>*{{req.other}}</sup>
+                        {% endif %}
+                    </p>
+                    </div>
+
+
+                {% endif %}
+            {% endfor %}
+            <br>
             {% endif %}
         {% endfor %}
+
+        {% else %}
+            <p>No Subject Prerequisites</p>
+        {% endif %}
+                
     </div>
 </div>
 {% endblock %}

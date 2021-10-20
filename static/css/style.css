@@ -171,6 +171,61 @@ nav ul li a:hover:after {
  * Home Page *
  *************/
 
+ table {
+  width: 0%;
+  height: 25vh;
+  margin: 0 auto;
+  border-spacing: 0px;
+  border-radius: 10px;
+  background-color: #262a3f10;
+}
+
+
+table tr{
+  border: 1px solid var(--clr_tertiary);
+}
+
+table td{
+  width: calc(100%/8);
+}
+
+table td a {
+  color: #262a3f;
+  display: inline-block;
+  padding: 10px 25px;
+  position: relative;
+  width: 25%;
+}
+
+table:nth-child(even) a{
+  float: right;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* vertical-align: middle; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+table td a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+table td a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
  /* Box for degree tips */
 .home-container {
   width: 100%;
@@ -259,13 +314,28 @@ nav ul li a:hover:after {
   padding: 5px;
 }
 
+.available{
+  text-align: center;
+}
+
 .title{
   text-align: center;
 }
 
-.degree .prereq p{
-  display: inline-block;
+.degree h4{
+  color: var(--clr_primary);
 }
+
+.prereq_text{
+  margin: 5px;
+  height: 30px;
+  border: 1px solid #262a3f10;
+  width: 50%;
+}
+.prereq_text:nth-child(odd){
+  background-color: #262a3f10;
+}
+
 
  /**********************
  * All Degrees Page *
@@ -274,62 +344,7 @@ nav ul li a:hover:after {
    display: flex;
    justify-content: space-around;
  }
-.table {
-  width: 0%;
-  height: 25vh;
-  margin: 0 auto;
-  border-spacing: 0px;
-  border-radius: 10px;
-}
 
-.table:nth-child(even){
-  background-color: #262a3f10;
-}
-
-.table tr{
-  border: 1px solid var(--clr_tertiary);
-}
-
-.table td{
-  width: calc(100%/8);
-}
-
-.table td a {
-  color: #262a3f;
-  display: inline-block;
-  padding: 10px 25px;
-  position: relative;
-  width: 25%;
-}
-
-.table:nth-child(even) a{
-  float: right;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  /* vertical-align: middle; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.table td a:after {    
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: #fff;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
-}
-
-.table td a:hover:after { 
-  width: 100%; 
-  left: 0; 
-}
 
 /* Filtering System */
 .filter{

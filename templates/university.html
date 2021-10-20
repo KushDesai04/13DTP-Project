@@ -8,10 +8,13 @@
     <img src='/static/images/Auckland.jpg'>
 </div>
 
-<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" style="border:0;" allowfullscreen=""
+    loading="lazy"></iframe>
 
 <div class='university-degrees-container'>
     {% for degree in university.degrees %}
+
+
     <div class='grid-item'>
 
         <div>
@@ -25,31 +28,59 @@
             </a>
         </div>
         <div>
-            <button id="button" class="like_degree" type="submit" data-degree="{{ degree.name }}">
-                <p>{{degree.likes}} &#10084;</p>
-            </button>
+            <label>
+                <input type="checkbox" id="like_button" class="like_degree" type="submit" value="{{ degree.name }}">
+                <p>{{degree.likes}}<span>&#10084;</span></p>
+            </label>
         </div>
     </div> <!-- closing grid-item-->
     </a>
 
     {% endfor %}
 </div> <!-- closing grid-container-->
+</div> <!-- Closing all-degrees -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-    document.querySelectorAll('button.like_degree')
+    document.querySelectorAll('#like_button')
         .forEach(element => element.addEventListener(
-            'click',
+            'change',
             event => {
-                // $.post("like", event.target.dataset.degree).then(response => {
-                //     response.
-                console.log("liked")
+                console.log(event.target.checked);
+
+                fetch('/like', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        degree: event.target.value,
+                        positive: event.target.checked
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        event.target.parentElement.querySelector("p").innerHTML = data + "<span>&#10084;</span>";
+                        switch (event.target.checked) {
+                            case (true):
+                                color = "#0000004d";
+                                break;
+                            case (false):
+                                color = "#2d539e"
+                                break;
+                            default:
+                                color = "#2d539e";
+
+                        }
+                        event.target.parentElement.querySelector("span").style.color = color;
+
+                    });
+
+
             })
         )
-    function func(degree) {
-        $.post("like", degree);
-        console.log("func");
-    }
 </script>
+
 
 {% endblock %}
