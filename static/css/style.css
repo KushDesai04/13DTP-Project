@@ -397,7 +397,7 @@ nav ul li a:hover:after {
 }
 
 /* Like button styling */
-.grid-item button{
+.grid-item label{
   height: 2vh;
   width: 2vw;
   position: absolute;
@@ -408,12 +408,20 @@ nav ul li a:hover:after {
   border-radius: 15px;
 }
 
-.grid-item button:hover{
+.grid-item label input{
+  display: none;
+}
+
+.grid-item label:hover{
   background-color: rgba(0,0,0,0.1);
 }
 
-.grid-item button p{
-  font-size: 1vh;
+.grid-item label p{
+  font-size: 0.75rem;
+  color: var(--clr_primary);
+}
+
+.grid-item label span{
   color: var(--clr_primary);
 }
 
