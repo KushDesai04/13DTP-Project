@@ -197,6 +197,15 @@ table td a {
   width: 25%;
 }
 
+table td a img{
+  width: inherit;
+  height: auto;
+}
+
+table td a p{
+  line-height: 15px;
+}
+
 table:nth-child(even) a{
   float: right;
   width: 100%;
@@ -245,7 +254,7 @@ table td a:hover:after {
 .home-container .buttons #tip {
   cursor: pointer;
   color: white;
-  margin-top: 10px;
+  margin: 10px;
 }
 
 .home-container .buttons #tip::after{
@@ -432,7 +441,7 @@ table td a:hover:after {
 }
 
 .grid-item label p{
-  font-size: 0.75rem;
+  font-size: 1.1vh;
   color: var(--clr_primary);
 }
 

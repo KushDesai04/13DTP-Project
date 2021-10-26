@@ -44,11 +44,10 @@ def home():
   universities = models.University.query.all()
   return render_template('home.html', universities = universities)
 
+
 @app.route('/like', methods = ['POST'])
 def like():
   degree = json.loads(request.get_data())
-  print('='*20)
-  print(type(degree), "LIKED")
   deg = models.Degree.query.filter_by(name=degree["degree"]).first()
   deg.likes += 1 if degree["positive"] else - 1
   db.session.merge(deg)
@@ -78,7 +77,11 @@ def degree(id):
   universities = degree.universities
   prereq = degree.prerequisites
   prereq_uni = [req.uid for req in prereq]
-  return render_template('degree.html', degree = degree, universities = universities, prereq = prereq, prereq_uni = prereq_uni)
+  return render_template('degree.html', degree = degree,
+                          universities = universities,
+                          prereq = prereq,
+                          prereq_uni = prereq_uni)
+
 
 # All degrees page
 @app.route('/degrees', methods = ["GET", "POST"])
@@ -95,7 +98,6 @@ def degrees():
     if form.uni_data.data: 
       # Get uni id from form
       university_filter = (form.uni_data.data)
-      print(university_filter)
 
       # Filter degrees by uni using set
       for degree in degrees:
@@ -118,10 +120,7 @@ def degrees():
 
       # Get degrees that are in both sets
       degrees = list(set(uni_degrees) & set(sub_degrees))
-      print(degrees)
 
-      
-    
     # If no subject filters:
     else:
       degrees = uni_degrees

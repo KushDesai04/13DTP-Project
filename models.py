@@ -14,6 +14,8 @@ class University(db.Model):
     name = db.Column(db.String())
     details = db.Column(db.String())
     location = db.Column(db.String())
+    coat_of_arms = db.Column(db.String())
+    image = db.Column(db.String())
 
     # Relations
     degrees = db.relationship('Degree', secondary=UniversityDegree, back_populates='universities')
