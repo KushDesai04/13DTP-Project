@@ -14,7 +14,7 @@ user.email = '17522@burnside.school.nz
 from flask import Flask, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config                 
-from forms import SimpleForm
+from forms import FilterForm
 import json
 
 
@@ -86,9 +86,12 @@ def degree(id):
 # All degrees page
 @app.route('/degrees', methods = ["GET", "POST"])
 def degrees():
-  form = SimpleForm()
+  form = FilterForm()
   degrees = models.Degree.query.all()
   subjects = models.Subject.query.all()
+  prerequisites = models.Prerequisites.query.all()
+  for p in prerequisites:
+    print(p.sid)
   sort_by = "alphabet"
 
   if form.validate_on_submit():
@@ -112,7 +115,7 @@ def degrees():
     if form.subject_data.data: 
       # Get subject ids from form
       subject_filter = (form.subject_data.data)
-      subjects = models.Prerequisites.query.filter(models.Prerequisites.sid.in_(subject_filter)).all()
+      subjects = models.Prerequisites.query.filter(models.Prerequisites.sid.in_(subject_filter) | models.Prerequisites.sid.is_(None)).all()
 
       # Get degree id for every subject filtered 
       subjects = [subject.did for subject in subjects]
@@ -134,9 +137,9 @@ def degrees():
   if sort_by == "alphabet":
     degrees = sorted(degrees, key=lambda degree: degree.name)
   elif sort_by == "likes":
-    degrees = sorted(degrees, key=lambda degree: degree.likes)
+    degrees = sorted(degrees, key=lambda degree: degree.likes, reverse=True)
 
-  return render_template('degrees.html', degrees = degrees, forms=form)
+  return render_template('degrees.html', degrees = degrees, form=form)
 
 
 if __name__ == '__main__':

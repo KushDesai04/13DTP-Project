@@ -12,7 +12,9 @@
             <tr>
                 {% for university in universities %}
                 <td>
-                    <a href="{{ url_for('university', id = university.id) }}">{{ university.name }}</a>
+                    <a href="{{ url_for('university', id = university.id) }}">
+                        <img src='{{university.coat_of_arms}}'>
+                        {{ university.name }}</a>
                 </td>
                 {% endfor %}
             </tr>
@@ -39,7 +41,9 @@
                     {% endif %}
                     <div class="prereq_text">
                     <p>
-                        {{req.subjects.name}}
+                        {% if req.subjects.name %}
+                            {{req.subjects.name}}
+                        {% endif %}
                         {% if req.other %}
                             <sup>*{{req.other}}</sup>
                         {% endif %}

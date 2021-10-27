@@ -4,12 +4,12 @@
 <h2>{{ university.name }}</h2>
 
 <div class="flex">
-    <div class="text">{{university.details}}</div>
-    <img src='/static/images/Auckland.jpg'>
+    <div class="text">{{university.details}} <iframe src="https://www.google.com/maps/embed?pb={{university.location}}" style="border:0;" allowfullscreen=""
+        loading="lazy"></iframe> </div>
+    <img src='{{university.image}}'>
 </div>
 
-<iframe src="https://www.google.com/maps/embed?pb={{university.location}}" style="border:0;" allowfullscreen=""
-    loading="lazy"></iframe>
+
 
 <div class='university-degrees-container'>
     {% for degree in university.degrees %}

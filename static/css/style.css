@@ -294,13 +294,18 @@ table td a:hover:after {
 }
 
 .flex img{
-  width: 20vw;
+  width: 40vw;
   height: auto;
 }
 
 .flex .text{
   margin: 0 auto;
   width: 40%;
+}
+
+.flex .text iframe{
+  height: 90%;
+  width: 35vw;
 }
 
 /* Grid for degrees */
@@ -381,6 +386,10 @@ table td a:hover:after {
 .filter input[type=submit]:hover{
   background-color: var(--clr_secondary);
   color: #fff;
+}
+
+.filter_item label{
+  margin-top: 20px;
 }
 
 /* Grid for all degrees */
