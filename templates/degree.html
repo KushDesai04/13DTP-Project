@@ -39,6 +39,8 @@
                     {% if req.rankscore %}
                         Rankscore: {{ req.rankscore }}
                     {% endif %}
+
+                    {% if req.subjects.name or req.subjects.other %}
                     <div class="prereq_text">
                     <p>
                         {% if req.subjects.name %}
@@ -49,6 +51,7 @@
                         {% endif %}
                     </p>
                     </div> <!-- Closing prereq_text -->
+                    {% endif %}
 
 
                 {% endif %}
