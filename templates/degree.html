@@ -1,9 +1,9 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block content %}
 
 <div class="title">
-    <h2>Bachelor of {{degree.name}} </h2>
-</div>
+    <h2>Bachelor of {{ degree.name }} </h2>
+</div> <!-- Closing Title -->
 
 <div class="degree">
     <div class="available">
@@ -13,13 +13,13 @@
                 {% for university in universities %}
                 <td>
                     <a href="{{ url_for('university', id = university.id) }}">
-                        <img src='{{university.coat_of_arms}}'>
+                        <img src="{{ university.coat_of_arms }}" alt="{{ university.name }} coat of arms">
                         {{ university.name }}</a>
                 </td>
                 {% endfor %}
             </tr>
         </table>
-    </div>
+    </div> <!-- Closing avaiable -->
 
     <br>
 
@@ -27,28 +27,28 @@
 
     <div class ="prereq">
         <br>
-        <h3>Prerequisites-</h3>
+        <h3>Prerequisites*</h3>
 
         {% if prereq %}
         {% for uni in universities %}
             {% if uni.id in prereq_uni %} <!-- Check if the uni has prerequisites -->
-                <h4>{{uni.name}}:</h4>            
+                <h4>{{ uni.name }}:</h4>            
 
             {% for req in prereq %}
                 {% if uni.id == req.uid %} <!-- Match the prerequisite to the university -->
                     {% if req.rankscore %}
-                        Rankscore: {{req.rankscore}}
+                        Rankscore: {{ req.rankscore }}
                     {% endif %}
                     <div class="prereq_text">
                     <p>
                         {% if req.subjects.name %}
-                            {{req.subjects.name}}
+                            {{ req.subjects.name }}
                         {% endif %}
                         {% if req.other %}
-                            <sup>*{{req.other}}</sup>
+                            <sup>*{{ req.other }}</sup>
                         {% endif %}
                     </p>
-                    </div>
+                    </div> <!-- Closing prereq_text -->
 
 
                 {% endif %}
@@ -61,6 +61,6 @@
             <p>No Subject Prerequisites</p>
         {% endif %}
                 
-    </div>
-</div>
+    </div> <!-- Closing prereq -->
+</div> <!-- Closing degree -->
 {% endblock %}

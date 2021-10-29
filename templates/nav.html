@@ -7,11 +7,11 @@
       <div class="dropdown">
         <button class="dropbtn">Universities &#x25BC</button>
         <div class="dropdown-content">
-          {% for uni in uni %}
+          {% for uni in unis %}
             <a href="{{ url_for('university', id=uni.id )}}">{{uni.name}}</a>
           {% endfor %}
-        </div>
-      </div>
+        </div> <!-- Closing dropdown_content -->
+      </div> <!-- Closing dropdown -->
     </li>
 
   </ul>

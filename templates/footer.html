@@ -1,1 +1,28 @@
-<footer>Footer</footer>
+<footer>
+
+    <div class="flex">
+        <div class="text">
+            <p>*All universities require you to have University Entrance criteria to enrol.</p>
+            <p>Criteria:</p>
+            <p>NCEA Level 3</p>
+                <p>Three subjects - at Level 3, made up of: </p>
+                <p> 14 credits in each of three approved subjects </p>
+                <p> Literacy - 10 credits at Level 2 or above, made up of: </p>
+                <p> 5 credits in reading </p>
+                <p> 5 credits in writing </p>
+                <p> Numeracy - 10 credits at Level 1 or above, made up of: </p>
+                <p> achievement standards – specified achievement standards available through a range of subjects, or
+                unit standards - package of three numeracy unit standards (26623, 26626, 26627- all three required).</p>
+            
+        </div> <!-- Closing text -->
+
+        <div class="contact">
+        <h3>Contact:</h3>
+        {% for uni in unis %}
+        {{ uni.name }} : <a href = "tel:{{ uni.contact }}">{{ uni.contact}} </a>
+        <br>
+        {% endfor %}
+        </div> <!-- Closing contact -->
+    </div> <!-- Closing flex -->
+    
+</footer>
