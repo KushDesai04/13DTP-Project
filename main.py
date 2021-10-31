@@ -48,8 +48,8 @@ def home():
 @app.route('/like', methods=['POST'])
 def like():
     degree = json.loads(request.get_data())
-    deg = models.Degree.query.filter_by(name=degree["degree"]).first()
-    deg.likes += 1 if degree["positive"] else - 1
+    deg = models.Degree.query.filter_by(name=degree['degree']).first()
+    deg.likes += 1 if degree['positive'] else - 1
     db.session.merge(deg)
     db.session.commit()
     return str(deg.likes)
@@ -84,7 +84,7 @@ def degree(id):
 
 
 # All degrees page
-@app.route('/degrees', methods=["GET", "POST"])
+@app.route('/degrees', methods=['GET', 'POST'])
 def degrees():
     form = FilterForm()
     degrees = models.Degree.query.all()
@@ -92,7 +92,7 @@ def degrees():
     prerequisites = models.Prerequisites.query.all()
     for p in prerequisites:
         print(p.sid)
-    sort_by = "alphabet"
+    sort_by = 'alphabet'
 
     if form.validate_on_submit():
         # Empty list to store degrees filtered by university
@@ -137,9 +137,9 @@ def degrees():
         print(form.errors)
 
     # Sort degrees by name
-    if sort_by == "alphabet":
+    if sort_by == 'alphabet':
         degrees = sorted(degrees, key=lambda degree: degree.name)
-    elif sort_by == "likes":
+    elif sort_by == 'likes':
         degrees = sorted(
             degrees,
             key=lambda degree: degree.likes,
